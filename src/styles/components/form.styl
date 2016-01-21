@@ -1,0 +1,122 @@
+@import '../core/var'
+@import '../core/mixin'
+
+input:focus,
+select:focus,
+textarea:focus
+	border-color #47b7fb
+	
+input:focus:invalid:focus,
+select:focus:invalid:focus,
+textarea:focus:invalid:focus
+	border-color #f7574c	
+
+//input
+.c-input
+	padding 0 10px
+	height 32px
+	border 1px solid #ddd
+	line-height 32px	
+	
+.c-input--small
+	width 92px	
+
+.c-input--default
+	width 97px
+	
+.c-input--middle
+	width 157px
+	
+.c-input--large
+	width 197px	
+
+.c-input--xlarge
+	width 247px	
+	
+.c-input--xxlarge
+	width 282px
+	
+.c-input--xxxlarge
+	width 741px
+		
+//c-textarea
+.c-textarea
+	padding 0 10px
+	border 1px solid #ddd	
+
+.c-textarea--default
+	padding 5px 10px
+	width 282px
+	height 37px
+	resize none
+	
+//select
+.c-select
+	padding 0 10px
+	height 35px
+	border 1px solid #ddd
+	line-height 35px
+	
+.c-select--small
+	width 114px		
+	
+.c-select--default
+	width 120px
+	
+.c-select--middle
+	width 179px
+	
+.c-select--large 
+	width 219px	
+	
+.c-select--xlarge
+	width 269px
+	
+
+//checkbox
+.c-checkbox
+	display inline-block
+	vertical-align middle
+	background-size 100% 100%
+
+.c-checkbox--default
+	width 16px
+	height 16px
+
+.c-checkbox--large
+	width 18px
+	height 18px
+	
+.c-checkbox--unchecked--white
+	background-image url('../images/unchecked_white_18×18.png')
+	background-repeat no-repeat
+	
+.c-checkbox--unchecked--grey
+	background-image url('../images/unchecked_grey_18×18.png')
+	background-repeat no-repeat
+	
+.c-checkbox--checked--blue
+	background-image url('../images/checked_blue_18×18.png')
+	background-repeat no-repeat
+	
+.c-checkbox--checked--grey
+	background-image url('../images/checked_grey_18×18.png')
+	background-position no-repeat
+	
+//radio
+.c-radio
+	display inline-block
+	vertical-align middle
+	background-size 100% 100%
+
+.c-radio--default
+	width 18px
+	height 18px
+	
+.c-radio--unchecked
+	background-image url('../images/radio_unchecked_18×18.png')
+	background-repeat no-repeat
+	
+.c-radio--checked
+	background-image url('../images/radio_checked_18×18.png')
+	background-repeat no-repeat

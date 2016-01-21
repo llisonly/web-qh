@@ -1,0 +1,21 @@
+{
+  "name": "cs",
+  "version": "1.0.0",  
+  "author": "llisonly",  
+  "main": "gulpfile.js",  
+  "devDependencies": {
+    "bluebird": "^2.9.27",
+    "gulp": "^3.9.0",
+    "gulp-imerge": "0.0.4",
+    "gulp-minify-css": "^1.1.6",
+    "gulp-nocache": "0.0.9",    
+    "gulp-stylus": "^2.0.3",
+    "gulp-tap": "git://github.com/Javey/gulp-tap.git#master",
+    "gulp-uglify": "^1.2.0",
+    "lodash": "^3.9.3",
+    "nobone": "^1.6.4",
+    "path": "^0.11.14",
+    "rimraf": "^2.4.0",
+    "stylus": "^0.51.1"
+  }
+}

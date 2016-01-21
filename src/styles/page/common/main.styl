@@ -1,0 +1,168 @@
+@import '../../core/var'
+@import '../../core/mixin'
+
+.global-top
+	position fixed
+	left 50%
+	top 0
+	z-index $zindex-page
+	margin-left -($container-width/2)px
+	height 44px
+	.container
+		background url('../images/bg_top.jpg') no-repeat
+		background-size 100% 100%
+		text-align right
+		
+.layout-container
+	margin-top 44px
+	
+.layout-two--left
+	position fixed
+	left auto
+	top 44px
+	z-index $zindex-page
+	
+.logo
+	padding-left 52px
+	width 107px
+	height 44px
+	background url('../images/logo_s.png') no-repeat 13px #16a4fa
+	line-height 44px
+	text-align left
+	font-family arial
+	font-size 18px
+	color #fff
+
+.accountBar
+	display inline-block
+	margin-top 10px
+	padding 0 19px 0 13px
+	height 24px
+	border-left 1px solid #7b8288
+	line-height 24px
+	font-size 0
+	.account
+		width 16px
+		height 15px
+		background url('../images/icon/user.png') no-repeat
+		imerge icon
+		vertical-align -3px
+	.account-name
+		margin 0 11px 0 15px		
+		font-size 11px
+		color #cbcdce
+	.menu-down
+		width 11px
+		height 6px
+		background url('../images/icon/menu_down.png') no-repeat
+		imerge icon
+		vertical-align 1px
+
+.sidebar-nav
+	margin-top 30px
+	.active
+		a
+			background-color #1a191a
+			border-left 2px solid #16a4fa
+
+.sidebar-nav__item
+	height 40px
+	line-height 40px
+	a
+		display block
+		padding-left 19px
+		border-left 2px solid rgba(0,0,0,0)
+		color #cbcdce
+		cursor pointer
+		&:hover
+			background-color #1a191a
+			border-left 2px solid #16a4fa
+		.c-icon
+			margin-right 24px
+			width 26px	
+
+.sidebar-nav__item--merchandiseManage
+	a
+		.c-icon			
+			height 17px
+			background url('../images/nav/manager_grey_20×17.png') no-repeat
+			imerge nav
+	&:hover
+		.c-icon
+			background url('../images/nav/manager_white_20×17.png') no-repeat
+			imerge nav
+
+.sidebar-nav__item--merchandiseManage.active
+	a 
+		.c-icon
+			background url('../images/nav/manager_white_20×17.png') no-repeat
+			imerge nav
+		
+.sidebar-nav__item--merchandisePrice
+	a
+		.c-icon			
+			height 23px
+			background url('../images/nav/price_grey_22×23.png') no-repeat
+			imerge nav	
+		&:hover
+			.c-icon
+				background url('../images/nav/price_white_22×23.png') no-repeat
+				imerge nav
+
+.sidebar-nav__item--merchandisePrice.active
+	a
+		.c-icon
+			background url('../images/nav/price_white_22×23.png') no-repeat
+			imerge nav
+					
+.sidebar-nav__item--storeManage
+	a
+		.c-icon			
+			height 22px
+			background url('../images/nav/store_grey_22×22.png') no-repeat
+			imerge nav
+		&:hover
+			.c-icon
+				background url('../images/nav/store_white_22×22.png') no-repeat
+				imerge nav
+
+.sidebar-nav__item--storeManage.active
+	a 
+		.c-icon
+			background url('../images/nav/store_white_22×22.png') no-repeat
+			imerge nav
+
+.sidebar-nav__item--memberManage
+	a
+		.c-icon			
+			height 17px
+			background url('../images/nav/member_grey_24×17.png') no-repeat
+			imerge nav
+		&:hover
+			.c-icon
+				background url('../images/nav/member_white_24×17.png') no-repeat
+				imerge nav
+
+.sidebar-nav__item--memberManage.active
+	a
+		.c-icon
+			background url('../images/nav/member_white_24×17.png') no-repeat
+			imerge nav
+			
+.sidebar-nav__item--staffManage
+	a
+		.c-icon			
+			height 20px
+			background url('../images/nav/staff_grey_26×20.png') no-repeat
+			imerge nav
+		&:hover
+			.c-icon
+				background url('../images/nav/staff_white_26×20.png') no-repeat
+				imerge nav
+
+.sidebar-nav__item--staffManage.active
+	a
+		.c-icon
+			background url('../images/nav/staff_white_26×20.png') no-repeat
+			imerge nav
+					

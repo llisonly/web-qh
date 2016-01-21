@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>启衡</title>	
+	<link rel="stylesheet" href="{staticUrl}/styles/lib/jquery-datetimepicker/jquery.datetimepicker.css" />
+	<link rel="stylesheet" href="{staticUrl}/styles/base.css" />
+	<link rel="stylesheet" href="{staticUrl}/styles/style.css" />
+</head>
+<body ng-controller="commonController">
+	<div ui-view></div>
+	<script>
+		var qhConfig = {staticUrl:'{staticUrl}', 'svcUrl':'{svcUrl}'};
+	</script>
+	<script src="{staticUrl}/scripts/lib/require/require.js" data-main="{staticUrl}/scripts/main"></script>
+</body>
+</html>

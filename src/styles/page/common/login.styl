@@ -1,0 +1,101 @@
+@import '../../core/var'
+@import '../../core/mixin'
+
+.login-overlay
+	position fixed
+	width 100%
+	height 100%	
+	background url('../images/bg_login.jpg') no-repeat center top
+	background-size 100% 100%
+	.copyright
+		position absolute
+		left 0
+		bottom 20px
+		z-index $zindex-page
+		width 100%
+	
+.row-login
+	padding 115px 50px 0 508px	
+
+.login-logo
+	width 350px
+	height 63px
+	line-height 63px
+	text-align center
+	font-size 0	
+	img 
+		display inline-block
+		margin-right 35px
+		vertical-align top
+
+.login-store-name
+	font-family arial
+	font-size 30px
+	color #fff
+	
+.login-form
+	margin-top 80px	
+	.control-group
+		margin-top 43px		
+	.control-group--remember
+		margin-top 36px
+	.control-group--btn
+		margin-top 30px	
+	.controls
+		font-size 0
+	.help-inline--tooltip-wrapper
+		margin-left 14px		
+	
+.login-input-group
+	display inline-block
+	padding-left 47px
+	width 303px
+	border-bottom 1px solid #fff
+	.input-text
+		width 100%
+		height 34px
+		background none
+		border none
+		line-height 34px
+		font-size 18px
+		color #fff
+.login-input-group--account
+	background url('../images/account.png') no-repeat 5px
+.login-input-group--password
+	background url('../images/password.png') no-repeat 5px
+		
+.login-remember
+	font-size 14px
+	color #bcbcbe
+	cursor pointer
+	.c-checkbox
+		margin-right 11px
+		
+.login-btn
+	width 350px
+	height 34px
+	background #00a0e9
+	border none
+	line-height 34px
+	font-weight 600
+	font-size 14px
+	color #fff
+	
+//help-inline--tooltip
+.help-inline--tooltip-wrapper,
+.help-inline--tooltip,
+.help-inline--tooltip-inner
+	display inline-block
+.help-inline--tooltip-wrapper
+	padding-left 6px
+	background url('../images/tooltip-l.png') no-repeat left top
+.help-inline--tooltip
+	padding-right 2px
+	background url('../images/tooltip-r.png') no-repeat right top
+.help-inline--tooltip-inner
+	padding 0 16px
+	background #fff
+	height 35px
+	line-height 35px
+	font-size 18px
+	color #ce0000	

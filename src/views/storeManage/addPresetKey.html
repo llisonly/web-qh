@@ -1,0 +1,488 @@
+<div class="mainContent mainContent-storeManage--addPresetKey">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><a class="c-icon page-icon page-return" href="javascript:;" ng-click="goBack()"></a>添加新预置键方案</h3>			
+		</div>
+		<p class="mainContent-hd__ft"></p>
+	</div>
+	<div class="mainContent-bd bge">
+		<div class="form-content">
+			<form class="form-horizontal presetKey-form">				
+				<div class="form-row">
+					<div id="J_keyboard-list" class="keyboard-list clearfix">
+						<!-- start -->
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[0].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[0].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[0])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[10].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[10].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[10])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[0].focus || scaleKeyMapList[10].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[1].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[1].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[1])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[11].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[11].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[11])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[1].focus || scaleKeyMapList[11].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[2].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[2].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[2])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[12].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[12].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[12])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[2].focus || scaleKeyMapList[12].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[3].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[3].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[3])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[13].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[13].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[13])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[3].focus || scaleKeyMapList[13].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[4].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[4].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[4])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[14].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[14].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[14])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[4].focus || scaleKeyMapList[14].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[5].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[5].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[5])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[15].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[15].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[15])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[5].focus || scaleKeyMapList[15].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[6].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[6].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[6])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[16].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[16].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[16])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[6].focus || scaleKeyMapList[16].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[7].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[7].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[7])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[17].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[17].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[17])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[7].focus || scaleKeyMapList[17].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[8].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[8].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[8])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[18].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[18].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[18])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[8].focus || scaleKeyMapList[18].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[9].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[9].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[9])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[19].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[19].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[19])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[9].focus || scaleKeyMapList[19].focus" ng-include="'programme.html'"></div>
+						</div>
+						<!-- end -->
+						<!-- start -->
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[20].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[20].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[20])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[30].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[30].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[30])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[20].focus || scaleKeyMapList[30].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[21].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[21].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[21])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[31].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[31].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[31])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[21].focus || scaleKeyMapList[31].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[22].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[22].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[22])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[32].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[32].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[32])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[22].focus || scaleKeyMapList[32].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[23].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[23].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[23])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[33].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[33].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[33])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[23].focus || scaleKeyMapList[33].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[24].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[24].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[24])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[34].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[34].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[34])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[24].focus || scaleKeyMapList[34].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[25].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[25].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[25])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[35].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[35].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[35])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[25].focus || scaleKeyMapList[35].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[26].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[26].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[26])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[36].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[36].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[36])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[26].focus || scaleKeyMapList[36].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[27].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[27].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[27])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[37].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[37].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[37])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[27].focus || scaleKeyMapList[37].focus" ng-include="'programme.html'"></div>
+						</div>
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[28].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[28].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[28])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[38].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[38].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[38])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[28].focus || scaleKeyMapList[38].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[29].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[29].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[29])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[39].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[39].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[39])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[29].focus || scaleKeyMapList[39].focus" ng-include="'programme.html'"></div>
+						</div>
+						<!-- end -->
+						<!-- start -->
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[40].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[40].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[40])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[50].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[50].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[50])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[40].focus || scaleKeyMapList[50].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[41].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[41].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[41])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[51].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[51].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[51])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[41].focus || scaleKeyMapList[51].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[42].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[42].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[42])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[52].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[52].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[52])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[42].focus || scaleKeyMapList[52].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[43].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[43].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[43])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[53].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[53].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[53])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[43].focus || scaleKeyMapList[53].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[44].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[44].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[44])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[54].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[54].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[54])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[44].focus || scaleKeyMapList[54].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[45].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[45].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[45])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[55].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[55].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[55])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[45].focus || scaleKeyMapList[55].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[46].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[46].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[46])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[56].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[56].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[56])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[46].focus || scaleKeyMapList[56].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[47].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[47].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[47])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[57].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[57].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[57])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[47].focus || scaleKeyMapList[57].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[48].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[48].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[48])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[58].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[58].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[58])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[48].focus || scaleKeyMapList[58].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[49].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[49].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[49])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[59].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[59].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[59])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[49].focus || scaleKeyMapList[59].focus" ng-include="'programme.html'"></div>
+						</div>
+						<!-- end -->
+						<!-- start -->
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[60].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[60].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[60])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[70].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[70].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[70])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[60].focus || scaleKeyMapList[70].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[61].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[61].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[61])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[71].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[71].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[71])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[61].focus || scaleKeyMapList[71].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[62].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[62].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[62])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[72].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[72].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[72])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[62].focus || scaleKeyMapList[72].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[63].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[63].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[63])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[73].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[73].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[73])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[63].focus || scaleKeyMapList[73].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[64].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[64].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[64])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[74].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[74].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[74])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[64].focus || scaleKeyMapList[74].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[65].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[65].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[65])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[75].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[75].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[75])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[65].focus || scaleKeyMapList[75].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[66].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[66].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[66])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[76].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[76].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[76])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[66].focus || scaleKeyMapList[76].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[67].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[67].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[67])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[77].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[77].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[77])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[67].focus || scaleKeyMapList[77].focus" ng-include="'programme.html'"></div>
+						</div>						
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[68].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[68].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[68])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[78].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[78].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[78])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[68].focus || scaleKeyMapList[78].focus" ng-include="'programme.html'"></div>
+						</div>					
+						<div class="keyboard-list__item pr">
+							<div class="hd">
+								<em class="number">{{ scaleKeyMapList[69].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[69].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[69])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="bd">
+								<em class="number">{{ scaleKeyMapList[79].keyNo }}</em>
+								<input class="c-input" type="text" placeholder="方案名称" ng-model="scaleKeyMapList[79].pluName" ng-focus="showSearchProgramme($event,scaleKeyMapList[79])" ng-keyup="doSelectProgramme($event)" />
+							</div>
+							<div class="ft" ng-if="scaleKeyMapList[69].focus || scaleKeyMapList[79].focus" ng-include="'programme.html'"></div>
+						</div>
+						<!-- end -->
+					</div>
+				</div>
+			</form>			
+		</div>
+	</div>
+</div>
+
+<!-- search box-->
+<script type="text/ng-template" id="programme.html">
+	<div class="search-programme">
+		<div class="mod-search-box">
+			<div class="mod-search-box-hd"></div>
+			<div class="mod-search-box-bd">
+				<ul class="search-result">
+					<li ng-repeat="o in pluList" ng-class="{'current': $index == $parent.searchIndex}">
+						<a href="javascript:;" ng-click="doSelectPlu(o)">
+							<span class="num">{{ o.pluNo }}</span>
+							<span class="name">{{ o.pluName }}</span>
+							<span class="r dn operate-group">
+								<i class="c-icon c-icon-plus c-icon-plus--small c-icon-plus--grey"></i>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</script>

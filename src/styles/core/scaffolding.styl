@@ -1,0 +1,326 @@
+@import 'var'
+@import 'mixin'
+
+html 
+	font-size 100%
+	overflow-x auto
+	overflow-y auto
+
+body
+	font-family $font-family-base
+	font-size $font-size-base
+	line-height $line-height-base
+	color $text-color
+	background $body-bg
+	
+a 
+	color $link-color
+	
+img 
+	display block
+		
+.container
+	margin 0 auto
+	width $container-width
+
+//bg
+.bge
+	background #eee
+	
+//clearfix
+for cf in 'container' 'layout-two' 'row' 'clearfix'
+	.{cf}
+		*zoom 1
+		//overflow hidden	
+	.{cf}:before,
+	.{cf}:after
+		display table
+		line-height 0
+		content ''
+	.{cf}:after
+		clear both
+	
+//form-horizontal
+.form-horizontal
+	.control-label
+		float left
+		width 0
+		text-align right
+	.controls
+		margin-left 0
+
+//input/textarea		
+input:-webkit-autofill
+	-webkit-box-shadow 0 0 0 1000px white inset
+
+//layout
+.layout-two
+	//overflow hidden
+.layout-two--left
+	float left
+	width 159px
+	min-height 600px
+	background url('../images/bg_left.jpg') no-repeat
+	background-size 100% 100%
+.layout-two--right
+	margin-left 159px
+	min-height 600px
+
+//mainContent
+.mainContent-hd
+	.page-title		
+		height 82px
+		line-height 82px
+		font-size 22px
+		color #252525
+	.page-icon
+		margin 0 13px 0 16px
+	.page-return		
+		width 32px
+		height 32px
+		background url('../images/icon/circle_return.png') no-repeat
+		imerge icon
+	.summary
+		margin-left 22px
+		font-size 12px
+		color #acadad
+.mainContent-hd__hd
+	overflow hidden
+.mainContent-hd__ft
+	width 100%
+	height 6px
+	background -webkit-linear-gradient(top, #cfcfcf, #eee)
+	background -moz-linear-gradient(top, #cfcfcf, #eee)
+	background -o-linear-gradient(top, #cfcfcf, #eee)
+	background -ms-linear-gradient(top, #cfcfcf, #eee)
+.mainContent-bd
+	padding-bottom 40px
+
+//loading	
+.c-loading
+	height 100px
+	background-image url('../images/loading.gif')
+	background-repeat no-repeat 
+	background-position 50% 50%
+	
+//toolbar
+.toolbar
+	margin 26px 18px 0 0
+	font-size 0
+	.tool
+		margin-left 18px
+		width 30px
+		height 30px
+	.tool-add
+		background url('../images/icon/circle_plus_blue.png') no-repeat
+		imerge icon	
+	.tool-filter
+		background url('../images/icon/circle_filter_grey.png') no-repeat
+		imerge icon
+	.tool-filter--active
+		background url('../images/icon/circle_filter_blue.png') no-repeat
+		imerge icon
+
+//searchbar 
+.searchbar
+	padding 14px 18px 14px 16px
+	background #f2f2f2
+.search-input-group
+	margin-left 15px
+	color #4e4e4e
+	&:first-child
+		margin-left 0
+	.name
+		margin-right 8px
+		font-weight 600
+
+//table-content
+.price-unit
+	margin-left 3px
+	color #a0a0a0
+.currentPrice
+	color #ce0000
+
+//必填
+.required
+	color #fe2323
+	
+//line-split
+.line-split--grey
+	display inline-block	
+	border-left 1px solid #ddd
+	font-size 0
+	vertical-align top	
+
+//line-interval
+.line-interval--grey
+	display block
+	border-bottom 1px dashed #dfdfdf
+	font-size 0
+
+//form-content
+.form-content
+	padding 3px 0 0
+	.form-row
+		margin-top 14px
+		padding-left 145px
+	.control-group
+		display inline-block
+		width 490px
+	.control-group--size1of1
+		width 857px
+	.control-label
+		width 80px
+		height 34px
+		line-height 34px
+		font-size 14px
+		color #4e4e4e
+	.controls
+		position relative
+		margin-left 94px
+	.line-interval-wrapper
+		margin-top 14px
+		padding 0 202px 0 235px
+	.line-split--grey
+		height 29px
+		vertical-align 20px
+	.more
+		display inline-block
+		margin-left 18px
+		text-decoration underline
+		font-size 14px
+		color #4985b9
+		vertical-align bottom
+
+//mod-box
+.mod-box--second	
+	border-width 2px 1px 1px
+	border-style solid
+	border-color #00a0e9 #bfbfbf #bfbfbe
+	box-shadow(0 1px 6px #bfbfbf)
+	color #4e4e4e
+//默认lightBlue
+//运营
+.mod-box--second--green
+	border-top-color #1cb09a
+.mod-box--second--red
+	border-top-color #e58779
+//店长	
+.mod-box--second--orange
+	border-top-color #eb6100
+//员工	
+.mod-box--second--blue
+	border-top-color #0075a9
+//高级员工	
+.mod-box--second--deepBlue
+	border-top-color #1d2088
+//临时工	
+.mod-box--second--deepRed
+	border-top-color #e60012
+//财务	
+.mod-box--second--purple
+	border-top-color #8957a1
+.mod-box--second-hd
+	padding 0 9px
+	height 43px
+	line-height 43px
+	font-size 0
+	.name
+		font-size 14px
+	.c-icon-edit,
+	.c-icon-save,			
+	.c-icon-close		
+		margin-left 17px		
+.mod-box--second-bd
+	margin 0 3px
+	padding 0 2px 5px 6px
+	border-top 1px solid #e4e4e4
+	li
+		margin-top 5px
+	.control-group
+		height 34px
+		line-height 34px
+	.control-group--right
+		margin-left 8px
+	.control-label
+		width 60px
+		text-align left
+	.controls
+		position relative
+		margin-left 60px		
+.mod-box--second-ft
+	border-top 1px solid #dcdcdc
+	
+.mod-box--third
+	display inline-block
+	padding 0 8px
+	width 218px
+	background #fff
+	border 1px solid #ddd	
+.mod-box--third-hd
+	height 27px
+	line-height 27px
+	font-size 0
+	.c-icon-close--large
+		margin-left 17px
+.mod-box--third-bd
+	margin 0 8px
+	padding 0 24px 15px
+	border-top 1px solid #f2f2f2
+	font-size 14px
+	.content-item
+		display block
+		margin-top 10px
+
+//mod-box-add
+.mod-box-add--first,
+.mod-box-add--second
+	a
+		display block
+		width 100%
+		height 100%
+
+.mod-box-add--first	
+	border 1px dashed #bbb
+	background url('../images/sign_plus_grey.png') no-repeat 50% 50% #e3e3e3
+
+.mod-box-add--second
+	border 1px dashed #7e7e7e
+	background url('../images/plus.png') no-repeat 50% 50% #e5e5e5
+
+//mod-box-copy
+.mod-box-copy--first
+	border 1px dashed #7e7e7e
+	background url('../images/duplicate_33×38.png') no-repeat 50% 50% #e5e5e5
+	a 
+		display block
+		width 100%
+		height 100%
+
+//mod-boxList
+.mod-boxList__item
+	float left
+	margin 17px 0 0 16px
+	width 380px
+	background #fff
+	
+//mod-search-box
+.mod-search-box
+	background #fff
+	border-width 0 1px 1px
+	border-style solid
+	border-color #c8c8c8
+	.c-input
+		padding-left 46px
+		background none
+		font-size 14px			
+.mod-search-box-hd
+	padding 16px 13px 0
+.mod-search-box-bd
+	min-height 29px
+	padding 0 13px 16px
+	
+//pagination
+.pagination
+	margin-top 19px
+	text-align center	

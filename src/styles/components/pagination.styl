@@ -1,0 +1,53 @@
+@import '../core/var'
+@import '../core/mixin'
+
+.paginationjs
+	display inline-block
+	font-size 0
+	.paginationjs-pages
+		display inline-block		
+		li
+			display inline-block
+			margin-left 4px
+			width 27px
+			height 27px
+			border 1px solid #dcdcdc
+			text-align center
+			line-height 27px			
+			>a 
+				display block
+				font-size 12px
+				color #4e4e4e
+		.paginationjs-prev,
+		.paginationjs-next
+			width 67px
+			>a
+				color #5789dc
+		.paginationjs-prev
+			margin-left 0
+		.paginationjs-prev.disabled,
+		.paginationjs-next.disabled
+			>a
+				color #c8c8c8
+		.active
+			>a 				
+				font-weight 600
+	.paginationjs-go-input,
+	.paginationjs-go-button
+		display inline-block		
+		>input			
+			width 27px
+			height 27px
+			border 1px solid #dcdcdc
+			text-align center
+			line-height 27px
+			font-size 12px		
+	.paginationjs-go-input
+		margin-left 10px		
+	.paginationjs-go-button		
+		margin-left 4px
+		>input
+			width 67px
+			height auto
+			background #fff
+			color #5789dc

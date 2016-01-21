@@ -1,0 +1,346 @@
+<div class="mainContent mainContent-merchandiseManage--add">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><a class="c-icon page-icon page-return" href="javascript:;" ng-click="goBack()"></a>添加商品</h3>
+		</div>
+		<p class="mainContent-hd__ft"></p>
+	</div>
+	<div class="mainContent-bd bge">
+		<div class="form-content">
+			<form class="form-horizontal" name="addPluForm" ng-value="addPluForm = addPluForm" ng-keyup="doSavePlu(plu, $event)">
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>商品编码</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="pluNo" ng-model="plu.pluNo" ng-pattern="/^[0-9]*$/" ng-maxlength="6" required />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.pluNo.$dirty && addPluForm.pluNo.$error.required">
+								商品编码不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.pluNo.$dirty && addPluForm.pluNo.$error.maxlength">
+								商品编码不能超过6个字符
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.pluNo.$dirty && addPluForm.pluNo.$error.pattern">
+								商品编码只能为数字
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>商品名称</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="pluName" ng-model="plu.pluName" ng-maxlength="50" required />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.pluName.$dirty && addPluForm.pluName.$error.required">
+								商品名称不能为空
+								<i class="c-icon triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.pluName.$dirty && addPluForm.pluName.$error.maxlength">
+								商品名称不能超过50个字符
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label">货号</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="itemId" ng-model="plu.itemId" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">助记码</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="pluShortName" ng-model="plu.pluShortName" ng-maxlength="50" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.pluShortName.$dirty && addPluForm.pluShortName.$error.maxlength">
+								助记码不能超过50个字符
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>				
+				<div class="line-interval-wrapper">
+					<p class="line-interval--grey"></p>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>计价单位</label>
+						<div class="controls">
+							<select class="c-select c-select--xlarge" ng-model="plu.unit" ng-options="o.key as o.value for o in unitList" name="unit" required>
+								<option value="">请选择计价单位</option>
+							</select>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.unit.$dirty && addPluForm.unit.$error.required">
+								计价单位不能为空
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<span class="ml-70 f14 cp" ng-click="plu.allowDiscount = !plu.allowDiscount">
+								允许折扣<i class="ml15 c-checkbox c-checkbox--default" ng-class="{'c-checkbox--checked--blue': plu.allowDiscount, 'c-checkbox--unchecked--grey': !plu.allowDiscount}"></i>
+							</span>
+							<span class="ml60 f14 cp" ng-click="plu.allowChangePrice = !plu.allowChangePrice">
+								允许改价<i class="ml15 c-checkbox c-checkbox--default" ng-class="{'c-checkbox--checked--blue': plu.allowChangePrice, 'c-checkbox--unchecked--grey': !plu.allowChangePrice}"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>建议零售价</label>
+						<div class="controls">
+							<input class="mr10 c-input c-input--xlarge" type="text" name="price" ng-model="plu.price" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required />元<em ng-if="plu.unit">/{{ plu.unit | unit }}</em>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.price.$dirty && addPluForm.price.$error.required">
+								建议零售价不能为空
+								<i class="c-icon triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip c-help-block--large" ng-if="addPluForm.price.$dirty && addPluForm.price.$error.pattern">
+								建议零售价只能输入数字且只能输入到小数点后两位
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>					
+				</div>				
+				<div class="line-interval-wrapper">
+					<p class="line-interval--grey"></p>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>一级类别</label>
+						<div class="controls">
+							<div class="c-dropdown c-dropdown--cat">
+								<a id="dropdown-firstCat" class="c-dropdown-toggle clearfix" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="l selected-name">{{ defaults.firstPluGroup.name |substring8 }}</span>
+									<i class="c-icon c-icon-triangle c-icon-triangle--default c-icon-triangle--down--black"></i>
+								</a>
+								<ul class="dropdown-menu c-dropdown-menu dn" aria-labelledby="dropdown-firstCat">
+									<li class="c-dropdown-header" ng-click="showFirstPluGroupForm($event)">
+										<a href="javascript:;">新增类别</a>
+									</li>
+									<li class="clearfix" ng-class="{'c-dropdown-menu__item-selected': o.checked}" ng-repeat="o in firstPluGroupList" ng-click="selectFirstPluGroup(o)">
+										<span class="available-selected-name">{{ o.pluGroupName |substring8 }}</span>
+										<span class="r operate-group dn">
+											<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showFirstPluGroupForm($event, o)"></a>
+											<a class="ml15 c-icon c-icon-delete c-icon-delete--default c-icon-delete--black" href="javascript:;" ng-click="deleteFirstPluGroup($event, $index)"></a>
+										</span>
+									</li>								
+								</ul>
+							</div>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="validator.firstPluGroup">
+								一级类别不能为空
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>二级类别</label>
+						<div class="controls">
+							<div class="c-dropdown c-dropdown--cat">
+								<a id="dropdown-secondCat" class="c-dropdown-toggle clearfix" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="l selected-name">{{ defaults.secondPluGroup.name |substring8 }}</span>
+									<i class="c-icon c-icon-triangle c-icon-triangle--default c-icon-triangle--down--black"></i>
+								</a>
+								<ul class="c-dropdown-menu dn" aria-labelledby="dropdown-secondCat">
+									<li class="c-dropdown-header" ng-click="showSecondPluGroupForm($event)">
+										<a href="javascript:;">新增类别</a>
+									</li>
+									<li class="clearfix" ng-class="{'c-dropdown-menu__item-selected': o.checked}" ng-repeat="o in secondPluGroupList" ng-click="selectSecondPluGroup(o)">
+										<span class="available-selected-name">{{ o.pluGroupName |substring8 }}</span>
+										<span class="r operate-group dn">
+											<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showSecondPluGroupForm($event, o)"></a>
+											<a class="ml15 c-icon c-icon-delete c-icon-delete--default c-icon-delete--black" href="javascript:;" ng-click="deleteSecondPluGroup($event, $index)"></a>
+										</span>
+									</li>
+								</ul>
+							</div>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="validator.secondPluGroup">
+								二级类别不能为空
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>				
+				<div class="line-interval-wrapper">
+					<p class="line-interval--grey"></p>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>皮重号</label>
+						<div class="controls">
+							<div class="c-dropdown c-dropdown--tare">
+								<a class="c-dropdown-toggle clearfix" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="l selected-name">{{ defaults.tare.desc |substring8 }}</span>
+									<i class="c-icon c-icon-triangle c-icon-triangle--default c-icon-triangle--down--black"></i>
+								</a>
+								<ul class="c-dropdown-menu dn" aria-labelledby="dropdown-tare">
+									<li class="c-dropdown-header" ng-click="showTareForm($event)">
+										<a href="javascript:;">新增皮重</a>
+									</li>
+									<li class="clearfix" ng-class="{'c-dropdown-menu__item-selected': o.checked,}" ng-repeat="o in tareList" ng-click="selectTare(o)">
+										<span class="available-selected-name">{{ o.desc |substring8}}</span>
+										<span class="r operate-group dn">
+											<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showTareForm($event, o)"></a>
+											<a class="ml5 c-icon c-icon-delete c-icon-delete--default c-icon-delete--black" href="javascript:;" ng-click="deleteTare($event, $index)"></a>
+										</span>
+									</li>																
+								</ul>
+							</div>
+							<span class="tare-mapping-name">重量：{{ defaults.tare.weight }}{{ defaults.tare.unit | unit }}</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="validator.tare">
+								皮重不能为空
+								<i class="c-icon triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="control-group mt15">
+						<label class="control-label"></label>
+						<div class="controls">
+							<span class="c-btn-group">
+								<a class="c-btn c-btn--large c-btn--blue" href="javascript:;" ng-click="doSavePlu(plu)">保存</a>
+								<span ng-if="!isEditPage">
+									<a class="ml10 c-btn c-btn--xlarge" href="javascript:;" ng-click="doSaveAndAddPlu(plu)">保存并新增</a>
+									<i class="ml10 line-split--grey">|</i>
+								</span>								
+								<a class="ml10 c-btn c-btn--large" href="javascript:;" ng-click="goBack()">取消</a>
+							</span>						
+						</div>
+					</div>
+				</div>			
+			</form>
+		</div>	
+	</div>
+</div>
+
+<!-- 新增、编辑一级分类 -->
+<div id="J_modal-firstPluGroupForm" class="modal fade c-modal c-modal-form" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	      		<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>	      		
+		        <h4 class="modal-title" ng-if="!isEditFirstPluGroup">新增一级类别</h4>
+		        <h4 class="modal-title" ng-if="isEditFirstPluGroup">编辑一级类别</h4>		       
+	      	</div>
+	   		<div class="modal-body">
+		      	<form class="form-horizontal" name="firstPluGroupForm" ng-value="firstPluGroupForm = firstPluGroupForm" ng-keyup="doSaveFirstPluGroup(firstPluGroup, $event)">
+					<div class="control-group">
+						<label class="control-label">名称</label>
+						<div class="controls">
+							<input class="c-input c-input--large" type="text" ng-model="firstPluGroup.pluGroupName" name="pluGroupName" ng-maxlength="50" required />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="firstPluGroupForm.pluGroupName.$dirty && firstPluGroupForm.pluGroupName.$error.required">
+								名称不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="firstPluGroupForm.pluGroupName.$dirty && firstPluGroupForm.pluGroupName.$error.maxlength">
+								名称不能超过50个字符
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>					
+				</form>
+		    </div>
+		    <div class="modal-footer">
+		    	<div class="c-btn-group">
+		    		<a class="c-btn c-btn--small c-btn--blue" ng-click="doSaveFirstPluGroup(firstPluGroup)">确定</a>
+		        	<a class="ml5 c-btn c-btn--small" data-dismiss="modal">取消</a>
+		    	</div>
+		    </div>
+	    </div>
+	</div>
+</div>
+
+<!-- 新增、编辑二级分类 -->
+<div id="J_modal-secondPluGroupForm" class="modal fade c-modal c-modal-form" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	      		<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>	      		
+		        <h4 class="modal-title" ng-if="!isEditSecondPluGroup">新增二级类别</h4>
+		        <h4 class="modal-title" ng-if="isEditSecondPluGroup">编辑二级类别</h4>		       
+	      	</div>
+	   		<div class="modal-body">
+		      	<form class="form-horizontal" name="secondPluGroupForm" ng-value="secondPluGroupForm = secondPluGroupForm" ng-keyup="doSaveSecondPluGroup(secondPluGroup, $event)">
+					<div class="control-group">
+						<label class="control-label">名称</label>
+						<div class="controls">
+							<input class="c-input c-input--large" type="text" ng-model="secondPluGroup.pluGroupName" name="pluGroupName" ng-maxlength="50" required />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="secondPluGroupForm.pluGroupName.$dirty && secondPluGroupForm.pluGroupName.$error.required">
+								名称不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="secondPluGroupForm.pluGroupName.$dirty && secondPluGroupForm.pluGroupName.$error.maxlength">
+								名称不能超过50个字符
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>					
+				</form>
+		    </div>
+		    <div class="modal-footer">
+		    	<div class="c-btn-group">
+		    		<a class="c-btn c-btn--small c-btn--blue" ng-click="doSaveSecondPluGroup(secondPluGroup)">确定</a>
+		        	<a class="ml5 c-btn c-btn--small" data-dismiss="modal">取消</a>
+		    	</div>
+		    </div>
+	    </div>
+	</div>
+</div>
+
+<!-- 新增、编辑皮重 -->
+<div id="J_modal-tareForm" class="modal fade c-modal c-modal-form" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	      		<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>	      		
+		        <h4 class="modal-title" ng-if="!isEditTare">新增皮重</h4>
+		        <h4 class="modal-title" ng-if="isEditTare">编辑皮重</h4>		       
+	      	</div>
+	   		<div class="modal-body">
+		      	<form class="form-horizontal" name="tareForm" ng-value="tareForm = tareForm" ng-keyup="doSaveTare(tare, $event)">
+		      		<div class="control-group">
+						<label class="control-label">描述</label>
+						<div class="controls">
+							<input class="c-input c-input--large" type="text" ng-model="tare.desc" name="desc" required />					
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="tareForm.desc.$dirty && tareForm.desc.$error.required">
+								描述不能为空
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>					
+					<div class="control-group">
+						<label class="control-label">单位</label>
+						<div class="controls">
+							<select class="c-select c-select--large" ng-model="tare.unit" name="unit" ng-options="o.key as o.value for o in unitList" required>
+								<option value="">请选择单位</option>
+							</select>					
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="tareForm.unit.$dirty && tareForm.unit.$error.required">
+								单位不能为空
+								<i class="triangle-down"></i>
+							</span>							
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">重量</label>
+						<div class="controls">
+							<input class="c-input c-input--large" type="text" ng-model="tare.weight" name="weight" required />					
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="tareForm.weight.$dirty && tareForm.weight.$error.required">
+								重量不能为空
+								<i class="triangle-down"></i>
+							</span>							
+						</div>
+					</div>		
+				</form>
+		    </div>
+		    <div class="modal-footer">
+		    	<div class="c-btn-group">
+		    		<a class="c-btn c-btn--small c-btn--blue" ng-click="doSaveTare(tare)">确定</a>
+		        	<a class="ml5 c-btn c-btn--small" data-dismiss="modal">取消</a>
+		    	</div>
+		    </div>
+	    </div>
+	</div>
+</div>

@@ -1,0 +1,112 @@
+<div class="mainContent mainContent-merchandiseManage--add">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><a class="c-icon page-icon page-return" href="javascript:;" ng-click="goBack()"></a>添加用户</h3>
+		</div>
+		<p class="mainContent-hd__ft"></p>
+	</div>
+	<div class="mainContent-bd bge">
+		<div class="form-content">
+			<form class="form-horizontal" name="staffForm" ng-value="staffForm = staffForm" ng-keyup="doSave(staff, $event)">
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>用户名</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" ng-model="staff.staffNo" name="staffNo" required ng-maxlength="45" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.staffNo.$dirty && staffForm.staffNo.$error.required">
+								用户名不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.staffNo.$dirty && staffForm.staffNo.$error.maxlength">
+								用户名不能超过45个字符
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>					
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>密码</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" ng-model="staff.clearPassword" name="clearPassword" required />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.clearPassword.$dirty && staffForm.clearPassword.$error.required">
+								密码不能为空
+								<i class="triangle-down"></i>
+							</span>							
+						</div>
+					</div>					
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>姓名</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" ng-model="staff.name" name="name" required ng-maxlength="45" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.name.$dirty && staffForm.name.$error.required">
+								姓名不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.name.$dirty && staffForm.name.$error.maxlength">
+								姓名不能超过45个字符
+								<i class="triangle-down"></i>
+							</span>						
+						</div>
+					</div>					
+				</div>						
+				<div class="form-row">
+					<div class="control-group control-group--size1of1">
+						<label class="control-label"><em class="required">*</em>角色</label>
+						<div class="controls">
+							<ul class="availabel-role-list">
+								<li ng-repeat="o in roleList" ng-class="{'checked': o.checked}" ng-click="doCheckRole($index)">
+									<i class="c-radio c-radio--default" ng-class="{'c-radio--checked': o.checked, 'c-radio--unchecked': !o.checked}"></i>
+									<span class="role-name">{{ o.name }}</span>
+									<span class="role-description">{{ o.description }}</span>
+								</li>								
+							</ul>
+							<span class="c-help c-help-block c-help-block--tooltip role-tooltip" ng-if="validator.role">
+								角色不能为空
+								<i class="triangle-left"></i>
+							</span>
+						</div>
+					</div>					
+				</div>
+				<div class="form-row">
+					<div class="control-group control-group--size1of1">
+						<label class="control-label"><em class="required">*</em>门店</label>
+						<div class="controls">
+							<ul class="available-store-list clearfix">
+								<li class="size1of4" ng-class="{'checked': isCheckedAllStore}" ng-click="doCheckAllStore()">
+									<i class="c-checkbox c-checkbox--large" ng-class="{'c-checkbox--checked--blue': isCheckedAllStore, 'c-checkbox--unchecked--grey': !isCheckedAllStore}"></i>
+									<span class="store-name">全部门店</span>
+								</li>
+								<li class="size1of4" ng-class="{'checked': store.checked && !isCheckedAllStore}" ng-repeat="store in storeList" ng-click="doCheckStore($index)">
+									<i class="c-checkbox c-checkbox--large" ng-class="{'c-checkbox--checked--blue': store.checked, 'c-checkbox--checked--grey': isCheckedAllStore && store.checked,'c-checkbox--unchecked--grey': !store.checked}"></i>
+									<span class="store-name">{{ store.name }}</span>
+								</li>
+							</ul>
+							<span class="c-help c-help-block c-help-block--tooltip store-tooltip" ng-if="validator.store">
+								门店不能为空
+								<i class="triangle-left"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="control-group mt15">
+						<label class="control-label"></label>
+						<div class="controls">
+							<span class="c-btn-group">
+								<a class="c-btn c-btn--large c-btn--blue" href="javascript:;" ng-click="doSave(staff)">保存</a>
+								<span ng-if="!isEditPage">
+									<a class="ml10 c-btn c-btn--xlarge" href="javascript:;" ng-click="doSaveAndAdd(staff)">保存并新增</a>
+									<i class="ml10 line-split--grey">|</i>
+								</span>								
+								<a class="ml10 c-btn c-btn--large" href="javascript:;" ng-click="goBack()">取消</a>
+							</span>						
+						</div>
+					</div>
+				</div>			
+			</form>
+		</div>	
+	</div>
+</div>

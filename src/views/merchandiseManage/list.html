@@ -1,0 +1,77 @@
+<div class="mainContent mainContent-merchandiseManage--list">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><i class="c-icon page-icon"></i>商品管理<small class="summary">共 {{ defaults.pluCount }} 种商品</small></h3>
+			<span class="r toolbar">
+				<a class="c-icon tool tool-add" href="#/main/merchandiseManage/add">添加</a>				
+				<a class="c-icon tool tool-filter" ng-class="{'tool-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+			</span>
+		</div>
+		<div class="mainContent-hd__bd">
+			<div class="searchbar" ng-if="isShowSearchbar">
+				<span class="search-input-group">
+					<label class="name">货号</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.itemId" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">商品编号</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.pluNo" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">商品名称</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.pluName" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">助记码</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.pluShortName" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">商品类别</label>
+					<select class="c-select c-select--default" ng-model="search.parentPLUGroupId" ng-options="o.pluGroupId as o.pluGroupName for o in firstPluGroupList">
+						<option value="">一级类别</option>
+					</select>
+					<select class="c-select c-select--default" ng-model="search.pluGroupId" ng-options="o.pluGroupId as o.pluGroupName for o in secondPluGroupList">
+						<option value="">二级类别</option>
+					</select>
+				</span>				
+			</div>
+		</div>		
+	</div>
+	<div class="mainContent-bd">
+		<table class="c-table">
+			<thead>
+				<tr>
+					<th width="9%">商品编号</th>
+					<th width="9%">货号</th>
+					<th width="10%">商品名称</th>
+					<th width="10%">助记码</th>
+					<th width="15%">一级类别</th>
+					<th width="15%">二级类别</th>
+					<th class="tr" width="10%">建议零售价</th>					
+					<th class="tr" width="12%">皮重值</th>
+					<th class="tc" width="10%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="loadingStatus">
+					<td colspan="9"><loading></loading></td>
+				</tr>
+				<tr ng-repeat="o in pluList">
+					<td>{{ o.pluNo }}</td>
+					<td>{{ o.itemId }}</td>
+					<td>{{ o.pluName }}</td>
+					<td>{{ o.pluShortName }}</td>
+					<td>{{ findPluGroup(pluGroupList, o.parentPLUGroupId).pluGroupName }}</td>
+					<td>{{ findPluGroup(pluGroupList, o.pluGroupId).pluGroupName }}</td>
+					<td class="tr">{{ o.price }}<em class="price-unit">元/{{ o.unit |unit }}</em></td>					
+					<td class="tr">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit |unit }}</em></td>
+					<td class="tc">
+						<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="#/main/merchandiseManage/edit/{{ o.pluId }}">编辑</a>
+						<a class="ml20 c-icon c-icon-delete c-icon-delete--default	c-icon-delete--black" href="javascript:;" ng-click="showConfirm(o)">删除</a>
+					</td>
+				</tr>				
+			</tbody>
+		</table>
+		<div id="pagination" class="pagination"></div>
+	</div>
+</div>

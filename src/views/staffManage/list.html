@@ -1,0 +1,62 @@
+<div class="mainContent mainContent-staffManage--list">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><i class="c-icon page-icon"></i>员工管理<small class="summary">共 {{ defaults.staffCount }} 名用户</small></h3>
+			<span class="r toolbar">
+				<a class="c-icon tool tool-add" href="#/main/staffManage/add">添加</a>
+				<a class="c-icon tool tool-filter" ng-class="{'tool-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+			</span>						
+		</div>
+		<div class="mainContent-hd__bd">
+			<div class="searchbar" ng-if="isShowSearchbar">
+				<span class="search-input-group">
+					<label class="name">门店</label>
+					<select class="c-select c-select--default" ng-model="defaults.storeId" ng-options="o.id as o.name for o in storeList">
+						<option value="">请选择门店</option>
+					</select>
+				</span>
+				<span class="search-input-group">
+					<label class="name">姓名</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.name" />
+				</span>
+			</div>
+		</div>
+		<div class="mainContent-hd__ft"></div>
+	</div>
+	<div class="mainContent-bd bge">
+		<loading ng-if="loadingStatus"></loading>
+		<div class="mod-boxList clearfix">
+			<div class="mod-boxList__item" ng-repeat="o in staffList">
+				<form class="form-horizontal">					
+					<div class="mod-box--second">
+						<div class="mod-box--second-hd">
+							<span class="name">{{ o.name }}</span>
+							<span class="r">									
+								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="#/main/staffManage/edit/{{ o.staffId }}"></a>
+								<a class="c-icon c-icon-close" href="javascript:;" ng-click="deleteStaff(staffList, $index)"></a>
+							</span>						
+						</div>
+						<div class="mod-box--second-bd">
+							<div class="control-group">
+								<label class="control-label">角色：</label>
+								<div class="controls">
+									<p>{{ findStaffRole(o.staffId).name }}</p>
+									<p class="description">&nbsp;</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">门店：</label>
+								<div class="controls">
+									<p><span ng-if="storeList.length == findStaffStoreList(o.staffId).length">全部门店</span>&nbsp;</p>
+									<p class="description">
+										<span class="mr5" ng-repeat="s in findStaffStoreList(o.staffId)">{{ s.name }}</span>
+									</p>
+								</div>
+							</div>								
+						</div>
+					</div>
+				</form>
+			</div>															
+		</div>
+	</div>
+</div>

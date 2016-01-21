@@ -1,0 +1,29 @@
+<div class="global-top">
+	<div class="container">
+		<a class="l logo" href="">Store Name</a>
+		<div class="accountBar">
+			<a class="db" href="javascript:;">
+				<i class="c-icon account"></i>
+				<span class="account-name">店长</span>
+				<i class="c-icon menu-down"></i>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="layout-container container">
+	<div class="layout-two">
+		<div class="layout-two--left">
+			<ul class="sidebar-nav">
+				<li class="sidebar-nav__item {{ nav.className }}" ng-class="{'active': $state.includes(nav.includeState)}" ng-repeat="nav in navList">
+					<a ui-sref="{{ nav.state }}"><i class="c-icon"></i>{{ nav.name }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="layout-two--right">
+			<div class="ui-view"></div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<p class="copyright">Copyright © 2015 QIHENG  启衡版权所有</p>
+</div>

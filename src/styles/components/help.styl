@@ -1,0 +1,47 @@
+@import '../core/var'
+@import '../core/mixin'
+	
+.c-help-wrapper
+	position relative	
+	
+.c-help
+	background-color #f7574c
+	border-radius(1px)
+	font-size 14px
+	color #fff
+	
+.c-help-block
+	display block
+	
+.c-help-block--tooltip
+	position absolute
+	left 0
+	top -32px
+	z-index $zindex-page
+	width 159px		
+	line-height 29px
+	text-align center	
+	.triangle-down
+		position absolute
+		left 8px
+		bottom -6px
+		z-index $zindex-page
+		width 14px
+		height 6px
+		background url('../images/icon/triangle_down_red.png') no-repeat
+		imerge icon
+	.triangle-left
+		position absolute
+		left -6px
+		top 8px
+		z-index $zindex-page
+		width 6px
+		height 14px		
+		background url('../images/icon/triangle_left_red.png') no-repeat
+		imerge icon
+
+.c-help-block--large
+	top -61px
+	padding 0 10px
+	width 230px
+	text-align left

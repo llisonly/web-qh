@@ -1,0 +1,89 @@
+<div class="mainContent mainContent-storeManage--equipmentList">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><a class="c-icon page-icon page-return" href="javascript:;" ng-click="goBack()"></a>{{ defaults.storeName }}</h3>
+			<span class="r toolbar">
+				<a class="c-icon tool tool-add" href="#/main/storeManage/addEquipment/{{ defaults.storeNo }}">添加</a>				
+				<a class="c-icon tool tool-filter" ng-class="{'tool-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+			</span>
+		</div>
+		<div class="mainContent-hd__bd">
+			<div class="searchbar" ng-if="isShowSearchbar">
+				<span class="search-input-group">
+					<label class="name">秤号</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.scaleId" />
+				</span>								
+				<span class="search-input-group">
+					<label class="name">IP</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.networkIPAddress" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">端口号</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.serverPort" />
+				</span>
+			</div>
+		</div>
+		<p class="mainContent-hd__ft"></p>		
+	</div>
+	<div class="mainContent-bd bge">
+		<loading ng-if="loadingStatus"></loading>
+		<div class="mod-boxList clearfix">
+			<div class="mod-boxList__item" ng-repeat="o in scaleList">
+				<form class="form-horizontal">
+					<div class="mod-box--second mod-box--second--red">
+						<div class="mod-box--second-hd">
+							<span class="name equipment-title">
+								<i class="c-icon" ng-class="{'c-icon-minus c-icon-minus--default c-icon-minus--red': !o.isActive, 'c-icon-ok c-icon-ok--default c-icon-ok--green': o.isActive}"></i>
+								<span class="equipment-name">{{ o.scaleName }}{{ o.scaleId }}</span>
+							</span>
+							<span class="r">
+								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="#/main/storeManage/editEquipment/{{ defaults.storeNo }}/{{ o.id }}"></a>
+								<a class="c-icon c-icon-close" href="javascript:;" ng-click="doDeleteScale(o)"></a>
+							</span>						
+						</div>
+						<div class="mod-box--second-bd">
+							<ul>
+								<li class="clearfix">									
+									<div class="l size1of2">
+										<div class="control-group">
+											<label class="control-label">IP：</label>
+											<div class="controls">{{ o.networkIPAddress }}</div>
+										</div>
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="l size1of2">
+										<div class="control-group">
+											<label class="control-label">预置键：</label>
+											<div class="controls"></div>
+										</div>
+									</div>
+									<div class="l size1of2">
+										<div class="control-group control-group--right">
+											<label class="control-label">端口：</label>
+											<div class="controls">{{ o.serverPort }}</div>
+										</div>									
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="l size1of2">
+										<div class="control-group">
+											<label class="control-label">浮动字幕：</label>
+											<div class="controls">{{ findScaleRunningText(o.id).text }}</div>
+										</div>
+									</div>
+									<div class="l size1of2">
+										<div class="control-group control-group--right">
+											<label class="control-label">服务器IP：</label>
+											<div class="controls">{{ o.serverIPAddr }}</div>
+										</div>									
+									</div>
+								</li>
+							</ul>			
+						</div>			
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

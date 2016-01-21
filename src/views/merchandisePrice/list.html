@@ -1,0 +1,140 @@
+<div class="mainContent mainContent-merchandisePrice--list">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd pr">
+			<h3 class="l page-title"><i class="c-icon page-icon"></i>商品价格<small class="summary">共 {{ defaults.pluCount }} 种商品</small></h3>
+			<span class="r toolbar">				
+				<a class="c-icon tool tool-filter" ng-class="{'tool-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+			</span>
+			<select class="c-select c-select--large select-store" ng-model="defaults.storeId" ng-options="o.id as o.name for o in storeList">
+				<option value="">门店</option>
+			</select>
+		</div>
+		<div class="mainContent-hd__bd">
+			<div class="searchbar" ng-if="isShowSearchbar">				
+				<span class="search-input-group">
+					<label class="name">货号</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.itemId" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">商品编号</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.pluNo" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">商品名称</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.pluName" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">助记码</label>
+					<input class="c-input c-input--default" type="text" ng-model="search.pluShortName" />
+				</span>
+				<span class="search-input-group">
+					<label class="name">商品类别</label>
+					<select class="c-select c-select--default" ng-model="search.parentPLUGroupId" ng-options="o.pluGroupId as o.pluGroupName for o in firstPluGroupList">
+						<option value="">一级类别</option>
+					</select>
+					<select class="c-select c-select--default" ng-model="search.pluGroupId" ng-options="o.pluGroupId as o.pluGroupName for o in secondPluGroupList">
+						<option value="">二级类别</option>
+					</select>
+				</span>				
+			</div>
+		</div>		
+	</div>
+	<div class="mainContent-bd">
+		<table class="c-table">
+			<thead>
+				<tr>
+					<th width="8%">商品编号</th>
+					<th width="8%">货号</th>
+					<th width="8%">商品名称</th>
+					<th width="7%">助记码</th>
+					<th width="10%">一级类别</th>
+					<th width="10%">二级类别</th>
+					<th class="tr" width="10%">建议零售价</th>
+					<th class="tr" width="10%">当前零售价</th>					
+					<th class="tr" width="10%">当前会员价</th>					
+					<th class="tr" width="9%">皮重值</th>
+					<th class="tc" width="10%">操作</th>
+				</tr>
+			</thead>
+			<tbody ng-if="isShowPlu">
+				<tr ng-if="loadingStatus">
+					<td colspan="10"><loading></loading></td>
+				</tr>
+				<tr ng-repeat="o in pluList">
+					<td>{{ o.pluNo }}</td>
+					<td>{{ o.itemId }}</td>
+					<td>{{ o.pluName }}</td>
+					<td>{{ o.pluShortName }}</td>
+					<td>{{ findPluGroup(pluGroupList, o.parentPLUGroupId).pluGroupName }}</td>
+					<td>{{ findPluGroup(pluGroupList, o.pluGroupId).pluGroupName }}</td>
+					<td class="tr">{{ o.price }}<em class="price-unit">元/{{ o.unit | unit }}</em></td>
+					<td class="tr"><em class="currentPrice">{{ o.currentPrice }}<em class="price-unit" ng-if="o.currentPrice">元/{{ o.unit | unit }}</em></td>
+					<th class="tr"><em class="currentPrice">{{ o.currentVipPrice }}<em class="price-unit" ng-if="o.currentVipPrice">元/{{ o.unit | unit }}</em></th>
+					<td class="tr">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit | unit }}</em></td>
+					<td class="tc">
+						<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showEditPluForm(o)">编辑</a>
+					</td>
+				</tr>				
+			</tbody>
+		</table>
+		<div id="pagination" class="pagination" ng-show="isShowPlu"></div>
+	</div>
+</div>
+
+<!-- modal -->
+<div id="J_modal-editPluForm" class="modal fade c-modal c-modal-form" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	      		<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>
+		        <h4 class="modal-title">编辑({{ plu.pluName }}+{{ plu.pluNo }})</h4>
+	      	</div>
+	   		<div class="modal-body">
+		      	<form class="form-horizontal" name="editPluForm" ng-value="editPluForm = editPluForm" ng-keyup="doSavePluForm(plu, $event)">
+		      		<div class="control-group">
+						<label class="control-label">门店</label>
+						<div class="controls">
+							<select class="c-select c-select--large" name="storeNo" ng-model="plu.storeNo" ng-options="o.id as o.name for o in storeList" required>
+								<option value="">请选择门店</option>
+							</select>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="editPluForm.storeNo.$dirty && editPluForm.storeNo.$error.required">
+								门店不能为空
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">当前零售价</label>
+						<div class="controls">
+							<input class="mr5 c-input c-input--large" ng-model="plu.currentPrice" type="text" name="price" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required /><em class="price-unit">元/{{ plu.unit | unit }}</em>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="editPluForm.price.$dirty && editPluForm.price.$error.required">
+								当前零售价不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip c-help-block--large" ng-if="editPluForm.price.$dirty && editPluForm.price.$error.pattern">
+								当前零售价只能输入数字且只能输入到小数点后两位
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">当前会员价</label>
+						<div class="controls">
+							<input class="mr5 c-input c-input--large" ng-model="plu.currentVipPrice" type="text" name="vipPrice" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /><em class="price-unit">元/{{ plu.unit | unit }}</em>
+							<span class="c-help c-help-block c-help-block--tooltip c-help-block--large" ng-if="editPluForm.vipPrice.$dirty && editPluForm.vipPrice.$error.pattern">
+								当前会员价只能输入数字且只能输入到小数点后两位
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</form>
+		    </div>
+		    <div class="modal-footer">
+		    	<div class="c-btn-group">
+		    		<a class="c-btn c-btn--small c-btn--blue" ng-click="doSavePluForm(plu)">确定</a>
+		        	<a class="ml5 c-btn c-btn--small" data-dismiss="modal">取消</a>
+		    	</div>
+		    </div>
+	    </div>
+	</div>
+</div>

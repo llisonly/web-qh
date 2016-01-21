@@ -1,0 +1,42 @@
+@import '../core/var'
+@import '../core/mixin'
+
+.c-table
+	width 100%
+	border 1px solid #dcdcdc
+	th,
+	td
+		padding 9px
+		text-align left
+		color #4e4e4e
+	.tr 
+		text-align right
+	.tc 
+		text-align center
+	.tl 
+		text-align left				
+	th
+		font-weight 600
+	>thead
+		>tr
+			background #e4e4e4
+			border-width 0 0 1px 2px
+			border-style solid
+			border-color #dcdcdc
+	>tbody	
+		>tr:nth-child(even)
+			background #eee
+			border-left 2px solid #fea300
+		>tr:nth-child(odd)
+			background #fff
+			border-left 2px solid #1cb09a
+		>tr:hover
+			background #3bb3fb
+			td
+				color #fff
+			.price-unit
+				color #fff
+			.c-icon-edit
+				background-image url('../images/pencil_white.png')
+			.c-icon-delete
+				background-image url('../images/trash_white_24×31.png')

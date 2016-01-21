@@ -1,0 +1,183 @@
+@import '../core/var'
+@import '../core/mixin'
+
+.fade
+	opacity 0
+	-webkit-transition opacity .15s linear
+	-o-transition opacity .15s linear
+	transition opacity .15s linear
+	
+.modal-backdrop
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	z-index $zindex-backdrop
+	background #000
+
+.fade.in 
+	opacity(1)
+
+.modal-backdrop.fade
+	opacity(0)	
+	
+.modal-backdrop.in 
+	opacity(0.5)
+	
+.modal 
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	z-index $zindex-modal
+	display none
+	overflow hidden
+	outline 0
+	
+.modal-open .modal
+	overflow-x hidden
+	overflow-y auto
+	
+.modal-dialog
+	position relative	
+	
+.modal.fade .modal-dialog
+	-webkit-transition -webkit-transform .3s ease-out
+	-o-transition -o-transform .3s ease-out
+	transition transform .3s ease-out
+	-webkit-transform translate(0,25%)
+	-ms-transform translate(0,25%)
+	-o-transform translate(0,25%)
+	transform translate(0,25%)
+	
+.modal.in .modal-dialog
+	-webkit-transform translate(0, 0)
+	-ms-transform translate(0, 0)
+	-o-transform translate(0, 0)
+	transform translate(0, 0)
+	
+.modal-content
+	position relative
+	background #fff
+	-webkit-background-clip padding-box
+	background-clip padding-box	
+	outline 0
+
+.modal-body
+	position relative
+
+.modal-footer	
+	text-align right
+			
+.c-modal-form
+	.modal-dialog
+		margin 200px auto
+		width 399px		
+	.modal-content		
+		border 1px solid #c9c9c9
+		border-radius(4px)		
+	.modal-header
+		padding 0 8px 0 16px
+		background-color #fbfbfb
+		border-bottom 1px solid #efefef
+		height 34px
+		line-height 34px
+	.modal-title
+		color #4e4e4e
+	.c-icon-close
+		margin-top 10px
+	.modal-body
+		padding-bottom 35px
+	.modal-footer
+		padding 10px 0 12px
+		background-color #fbfbfb 
+		border-top 1px solid #efefef
+		text-align center
+	.form-horizontal
+		.form-row
+			.control-group
+				display inline-block
+		.control-group
+			margin-top 34px
+			height 34px
+			line-height 34px
+		.control-label
+			width 94px
+		.controls
+			position relative
+			margin-left 110px
+			
+.c-modal-confirm
+	.modal-dialog
+		margin 200px auto
+		width 399px		
+	.modal-content		
+		border 1px solid #c9c9c9
+		border-radius(4px)		
+	.modal-header
+		padding 0 8px 0 16px
+		background-color #fbfbfb
+		border-bottom 1px solid #efefef
+		height 34px
+		line-height 34px
+	.modal-title
+		color #4e4e4e
+	.c-icon-close
+		margin-top 10px
+	.modal-body
+		padding-bottom 35px
+		text-align center
+		font-size 14px
+		color #4e4e4e
+		.alert-warning
+			margin 30px 0 23px 0
+			width 51px
+			height 43px
+			background url('../images/alert.png') no-repeat
+	.modal-footer
+		padding 10px 0 12px
+		background-color #fbfbfb
+		border-top 1px solid #efefef
+		text-align center
+		
+.c-modal-success,
+.c-modal-error
+	.modal-dialog
+		margin 200px auto
+		width 349px
+	.modal-content		
+		border 1px solid #c9c9c9
+		border-radius(4px)
+	.modal-header
+		padding 0 8px 0 16px			
+		height 34px
+		line-height 34px
+	.c-icon-close
+		margin-top 10px
+	.modal-body
+		padding-bottom 50px
+		text-align center
+		font-size 14px
+		color #4e4e4e
+			
+.c-modal-success
+	.modal-body	
+		.alert-success
+			margin 31px 0 22px  0
+			width 50px
+			height 50px
+			background url('../images/sign_ok_green_50×50.png') no-repeat
+			
+.c-modal-error			
+	.modal-body	
+		.alert-warning
+			margin 31px 0 22px 0
+			width 51px
+			height 43px
+			background url('../images/alert.png') no-repeat
+			
+.c-modal-form--large
+	.modal-dialog
+		width 669px

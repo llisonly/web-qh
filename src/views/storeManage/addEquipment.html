@@ -1,0 +1,171 @@
+<div class="mainContent mainContent-storeManage--addEquipment">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd">
+			<h3 class="l page-title"><a class="c-icon page-icon page-return" href="javascript:;" ng-click="goBack()"></a>添加设备</h3>
+			<a class="c-btn c-btn--default btn-copy" ng-if="isEditPage" href="javascript:;" ng-click="showCopyForm()">复制</a>
+		</div>
+		<p class="mainContent-hd__ft"></p>
+	</div>
+	<div class="mainContent-bd bge">
+		<div class="form-content">
+			<form class="form-horizontal" name="addScaleForm" ng-value="addScaleForm = addScaleForm" ng-keyup="doSaveScale(scale, $event)">
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>秤号</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="scaleIdInStore" ng-model="scale.scaleIdInStore" required ng-maxlength="11" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.scaleIdInStore.$dirty && addScaleForm.scaleIdInStore.$error.required">
+								秤号不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.scaleIdInStore.$dirty && addScaleForm.scaleIdInStore.$error.maxlength">
+								秤号不能超过11个字符
+								<i class="triangle-down"></i>
+							</span>							
+						</div>
+					</div>					
+				</div>
+				<div class="form-row" ng-if="isEditPage">
+					<div class="control-group control-group--size1of1">
+						<label class="control-label"><em class="required">*</em>预置键</label>
+						<div class="controls">
+							<div class="mod-box-copy--first mr20">
+								<a href="javascript:;" ng-click="showCopyForm('scaleKeyMap')"></a>
+							</div>
+							<div class="mod-box-add--second">
+								<a href="#/main/storeManage/addPresetKey/{{ scale.scaleId }}"></a>
+							</div>							
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="validator.scaleKeyMap">
+								预制键不能为空
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>				
+				<div class="form-row">
+					<div class="control-group control-group--size1of1">
+						<label class="control-label"><em class="required">*</em>浮动字幕</label>
+						<div class="controls">
+							<input class="c-input c-input--xxxlarge" type="text" name="scaleRunningText" ng-model="scale.scaleRunningText" required ng-maxlength="500" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.scaleRunningText.$dirty && addScaleForm.scaleRunningText.$error.required">
+								浮动字幕不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.scaleRunningText.$dirty && addScaleForm.scaleRunningText.$error.maxlength">
+								浮动字幕不能超过500个字符
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>IP</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="networkIPAddress" ng-model="scale.networkIPAddress" required ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.networkIPAddress.$dirty && addScaleForm.networkIPAddress.$error.required">
+								IP不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.networkIPAddress.$dirty && addScaleForm.networkIPAddress.$error.pattern">
+								IP格式不正确
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>端口号</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="serverPort" ng-model="scale.serverPort" required ng-pattern="/^[0-9]*$/" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.serverPort.$dirty && addScaleForm.serverPort.$error.required">
+								端口号不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.serverPort.$dirty && addScaleForm.serverPort.$error.pattern">
+								端口号只能为数字
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="control-group">
+						<label class="control-label"><em class="required">*</em>服务器IP</label>
+						<div class="controls">
+							<input class="c-input c-input--xlarge" type="text" name="serverIPAddr" ng-model="scale.serverIPAddr" required  ng-pattern="/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/" />
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.serverIPAddr.$dirty && addScaleForm.serverIPAddr.$error.required">
+								服务器IP不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.serverIPAddr.$dirty && addScaleForm.serverIPAddr.$error.pattern">
+								服务器IP格式不正确
+								<i class="triangle-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>								
+				<div class="form-row">
+					<div class="control-group mt15">
+						<label class="control-label"></label>
+						<div class="controls">
+							<span class="c-btn-group">
+								<a class="c-btn c-btn--large c-btn--blue" href="javascript:;" ng-click="doSaveScale(scale)">保存</a>
+								<span ng-if="!isEditPage">
+									<a class="ml10 c-btn c-btn--xlarge" href="javascript:;" ng-click="doSaveAndAddScale(scale)">保存并新增</a>
+									<i class="ml10 line-split--grey">|</i>
+								</span>								
+								<a class="ml10 c-btn c-btn--large" href="javascript:;" ng-click="goBack()">取消</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>	
+	</div>
+</div>
+
+<!-- 复制预置键 -->
+<div id="J_modal-copyForm" class="modal fade c-modal c-modal-form" tabindex="-1" role="dialog">
+  	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+       			<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>
+       			<h4 class="modal-title">复制信息</h4>        		
+      		</div>
+      		<div class="modal-body">
+      			<form class="form-horizontal" name="copyForm" ng-value="copyForm = copyForm">      				
+      				<div class="control-group">
+      					<label class="control-label">门店</label>
+  						<div class="controls">
+  							<select class="c-select c-select--large" name="storeNo" ng-model="copy.storeNo" ng-options="o.id as o.name for o in storeList" required>
+								<option value="">请选择门店</option>
+							</select>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="copyForm.storeNo.$dirty && copyForm.storeNo.$error.required">
+								门店不能为空
+								<i class="triangle-down"></i>
+							</span>
+  						</div>
+  					</div>
+  					<div class="control-group">
+		        		<label class="control-label">秤</label>
+		        		<div class="controls">
+		        			<select class="c-select c-select--large" name="scaleId" ng-model="copy.scaleId" ng-options="o.scaleId as o.scaleIdInStore for o in scaleList" required>
+								<option value="">请选择秤</option>
+							</select>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="copyForm.scaleId.$dirty && copyForm.scaleId.$error.required">
+								秤不能为空
+								<i class="triangle-down"></i>
+							</span>
+		        		</div>
+      				</div>
+      			</form>
+      		</div>
+      		<div class="modal-footer">
+      			<div class="c-btn-group">
+	        		<a class="c-btn c-btn--small c-btn--blue" ng-click="doCopy(copy)">确定</a>
+	        		<a class="ml10 c-btn c-btn--small" data-dismiss="modal">取消</a>
+      			</div>
+      		</div>
+    	</div>
+  	</div>
+</div>
