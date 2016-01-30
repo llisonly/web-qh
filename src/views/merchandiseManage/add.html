@@ -67,7 +67,7 @@
 					<div class="control-group">
 						<label class="control-label"><em class="required">*</em>计价单位</label>
 						<div class="controls">
-							<select class="c-select c-select--xlarge" ng-model="plu.unit" ng-options="o.key as o.value for o in unitList" name="unit" required>
+							<select class="c-select c-select--xlarge" ng-model="plu.unit" ng-options="o.key as o.value for o in unitOfAccountList" name="unit" required>
 								<option value="">请选择计价单位</option>
 							</select>
 							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addPluForm.unit.$dirty && addPluForm.unit.$error.required">
@@ -183,7 +183,7 @@
 										<span class="available-selected-name">{{ o.desc |substring8}}</span>
 										<span class="r operate-group dn">
 											<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showTareForm($event, o)"></a>
-											<a class="ml5 c-icon c-icon-delete c-icon-delete--default c-icon-delete--black" href="javascript:;" ng-click="deleteTare($event, $index)"></a>
+											<a class="ml15 c-icon c-icon-delete c-icon-delete--default c-icon-delete--black" href="javascript:;" ng-click="deleteTare($event, $index)"></a>
 										</span>
 									</li>																
 								</ul>

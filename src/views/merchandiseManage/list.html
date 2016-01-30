@@ -38,7 +38,7 @@
 		</div>		
 	</div>
 	<div class="mainContent-bd">
-		<table class="c-table">
+		<table class="c-table" ng-class="{'c-table--loading': loadingStatus}">
 			<thead>
 				<tr>
 					<th width="9%">商品编号</th>
@@ -53,7 +53,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-if="loadingStatus">
+				<tr ng-if="loadingStatus" class="loading-wrapper">
 					<td colspan="9"><loading></loading></td>
 				</tr>
 				<tr ng-repeat="o in pluList">

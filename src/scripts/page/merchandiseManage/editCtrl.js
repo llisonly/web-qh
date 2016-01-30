@@ -28,6 +28,8 @@ define([
 			$scope.tare = {};
 
 			//计价单位数据
+			$scope.unitOfAccountList = constants.getUnitOfAccount();
+
 			$scope.unitList = constants.getUnitList();
 
 			$scope.resetFirstPluGroup = function(){

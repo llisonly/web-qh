@@ -109,7 +109,7 @@ define([
 				if($scope.addScaleForm.$valid){
 					params.id = scaleId;
 					params.storeNo = $scope.defaults.storeNo;
-					params.scaleIdInStore = scale.storeNo;
+					params.scaleIdInStore = scale.scaleIdInStore;
 					params.scaleRunningText =scale.scaleRunningText;
 					params.networkIPAddress =scale.networkIPAddress;
 					params.serverPort =scale.serverPort;

@@ -11,14 +11,22 @@ define([], function(){
 						];
 					};
 
+					var getUnitOfAccount = function(){
+						return [
+							{key: 1, value: '公斤'},
+							{key: 2, value: '箱'}
+						];
+					};
+
 					var getUnitList = function(){
 						return [
-							{key: 1, value: '公斤'}							
+							{key: 1, value: '公斤'}
 						];
 					};
 
 					return {
 						getGenderList: getGenderList,
+						getUnitOfAccount: getUnitOfAccount,
 						getUnitList: getUnitList
 					};
 				});
