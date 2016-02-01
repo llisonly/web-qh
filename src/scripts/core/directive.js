@@ -4,7 +4,7 @@ define([
 		'use strict';
 
 		var init = function(){	
-			angular.module('common')  
+			angular.module('common')
     			.directive('uiDatetimepicker', function(){  
 
         			return {            	

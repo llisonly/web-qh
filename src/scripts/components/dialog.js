@@ -136,9 +136,13 @@ define([], function(){
 			this._reset();
 		},
 		_destroy: function(){
+			var self = this;
+			
 			this.wrapper.modal('hide');
-			this._reset();
-			self.wrapper.remove();
+			this.wrapper.on('hidden.bs.modal', function(e){
+				self._reset();
+				self.wrapper.remove();
+			});
 		}
 	};
 
