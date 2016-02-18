@@ -96,7 +96,7 @@
 		      		<div class="control-group">
 						<label class="control-label">门店</label>
 						<div class="controls">
-							<select class="c-select c-select--large" name="storeNo" ng-model="plu.storeNo" ng-options="o.id as o.name for o in storeList" required>
+							<select class="c-select c-select--large" name="storeNo" ng-model="plu.storeNo" ng-options="o.storeNo as o.name for o in storeList" required>
 								<option value="">请选择门店</option>
 							</select>
 							<span class="c-help c-help-block c-help-block--tooltip" ng-if="editPluForm.storeNo.$dirty && editPluForm.storeNo.$error.required">

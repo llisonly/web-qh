@@ -32,6 +32,9 @@ define([
 
 			$scope.unitList = constants.getUnitList();
 
+			//新增皮重默认皮重单位
+			$scope.tare.unit = $scope.unitList[0].key;			
+
 			$scope.resetFirstPluGroup = function(){
 				$scope.defaults.firstPluGroup.name = '请选择一级类别';
 				$scope.defaults.firstPluGroup.id = '';
@@ -288,7 +291,7 @@ define([
 			$scope.showTareForm = function($event, o){
 				$event.stopPropagation();
 				$scope.isEditTare = o ? true : false;
-				$scope.tare = o ? angular.copy(o) : {};
+				if(o) $scope.tare = angular.copy(o);				
 				$('#J_modal-tareForm').modal('show');
 			};
 			

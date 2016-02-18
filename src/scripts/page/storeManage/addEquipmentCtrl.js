@@ -18,6 +18,8 @@ define([
 				if($event && $event.which != 13) return;
 				factory.validateForm($scope, $scope.addScaleForm);
 				if($scope.addScaleForm.$valid){
+					scale.serverPort = '8001';
+					scale.serverIPAddr = '127.0.0.1';
 					scale.storeNo = $scope.defaults.storeNo;
 					storeManageService.createScale(scale, function(data){
 						var scaleId = data;
@@ -40,6 +42,8 @@ define([
 			$scope.doSaveAndAddScale = function(scale){
 				factory.validateForm($scope, $scope.addScaleForm);
 				if($scope.addScaleForm.$valid){
+					scale.serverPort = '8001';
+					scale.serverIPAddr = '127.0.0.1';					
 					scale.storeNo = $scope.defaults.storeNo;
 					storeManageService.createScale(scale, function(data){
 						var scaleId = data;

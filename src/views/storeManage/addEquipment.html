@@ -13,7 +13,7 @@
 					<div class="control-group">
 						<label class="control-label"><em class="required">*</em>秤号</label>
 						<div class="controls">
-							<input class="c-input c-input--xlarge" type="text" name="scaleIdInStore" ng-model="scale.scaleIdInStore" required ng-maxlength="11" />
+							<input class="c-input c-input--xlarge" type="text" name="scaleIdInStore" ng-model="scale.scaleIdInStore" ng-disabled="isEditPage" required ng-maxlength="11" />
 							<span class="c-help c-help-block c-help-block--tooltip" ng-if="addScaleForm.scaleIdInStore.$dirty && addScaleForm.scaleIdInStore.$error.required">
 								秤号不能为空
 								<i class="triangle-down"></i>
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-row">
+				<!-- <div class="form-row">
 					<div class="control-group">
 						<label class="control-label"><em class="required">*</em>IP</label>
 						<div class="controls">
@@ -87,8 +87,8 @@
 							</span>
 						</div>
 					</div>
-				</div>
-				<div class="form-row">
+				</div> -->
+				<!-- <div class="form-row">
 					<div class="control-group">
 						<label class="control-label"><em class="required">*</em>服务器IP</label>
 						<div class="controls">
@@ -103,7 +103,7 @@
 							</span>
 						</div>
 					</div>
-				</div>								
+				</div> -->								
 				<div class="form-row">
 					<div class="control-group mt15">
 						<label class="control-label"></label>

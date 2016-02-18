@@ -110,10 +110,9 @@ define([
 					params.id = scaleId;
 					params.storeNo = $scope.defaults.storeNo;
 					params.scaleIdInStore = scale.scaleIdInStore;
-					params.scaleRunningText =scale.scaleRunningText;
-					params.networkIPAddress =scale.networkIPAddress;
-					params.serverPort =scale.serverPort;
-					params.serverIPAddr =scale.serverIPAddr;
+					params.scaleRunningText = scale.scaleRunningText;										
+					params.serverPort = '8001';
+					params.serverIPAddr = '127.0.0.1';
 
 					storeManageService.updateScale(scaleId, params, function(data){
 						storeManageService.updateScaleRunningText(scale.scaleRunningTextId, {id: scale.scaleRunningTextId,scaleId: scaleId, text: scale.scaleRunningText}, function(data){

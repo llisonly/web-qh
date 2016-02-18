@@ -53,7 +53,7 @@ define([
 			};
 
 			$scope.$watch('defaults.storeId', function(newVal, oldVal){
-				if(newVal == undefined) return;
+				if(typeof newVal === 'undefined') return;
 
 				$q.all([$scope.getStorePluList($scope.generateParam(newVal)), $scope.getStorePluVipPriceList($scope.generateParam(newVal))]).then(function(){
 					$scope.combinePluList();
@@ -96,7 +96,7 @@ define([
 						}
 					});
 				});
-				$scope.isShowPlu = true;
+				$scope.isShowPlu = $scope.defaults.storeId ? true : false;			
 			};
 
 			//获取全部分类数据
