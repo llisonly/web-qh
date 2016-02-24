@@ -9,13 +9,13 @@
 		font-size 0
 		
 .btn-sidebar
-	margin 225px 10px 0 0
+	margin 100px 10px 0 0
 	display block
 	height 64px
 .btn-sidebar--on
 	background url('../images/slide_on.png') no-repeat right 50%	
 .btn-sidebar--off
-	background url('../images/slide_off.png') no-repeat 50% 50%
+	background url('../images/slide_off.png') no-repeat right 50%
 		
 .logo
 	display block
@@ -136,13 +136,20 @@
 		.c-icon
 			background url('../images/nav/staff_white_26×20.png') no-repeat
 			imerge nav
-			
-.goTop	
-	position absolute
+
+.toolbar
+	position fixed
 	right 10px
-	bottom 105px
+	bottom 50px
 	z-index $zindex-page
 	display none
 	width 36px
+.tool-add,
+.tool-goTop	
+	display block
+	width 36px
 	height 36px
+.tool-add
+	background url('../images/sign_plus_blue.png') no-repeat	
+.tool-goTop	
 	background url('../images/sign_arrow_up_green.png') no-repeat
