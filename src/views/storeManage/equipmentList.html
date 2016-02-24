@@ -1,10 +1,10 @@
 <div class="mainContent mainContent-storeManage--equipmentList">
 	<div class="mainContent-hd">
 		<div class="mainContent-hd__hd">
-			<h3 class="l page-title"><a class="c-icon page-icon page-return" href="javascript:;" ng-click="goBack()"></a>{{ defaults.storeName }}</h3>
-			<span class="r toolbar">
-				<a class="c-icon tool tool-add" href="#/main/storeManage/addEquipment/{{ defaults.storeNo }}">添加</a>				
-				<a class="c-icon tool tool-filter" ng-class="{'tool-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+			<h3 class="l page-title"><a class="c-icon mr10 page-return" href="javascript:;" ng-click="goBack()"></a>{{ defaults.storeName }}</h3>
+			<span class="r page-head-operatebar">
+				<a class="c-icon page-head-operate page-head-operate-add" href="#/main/storeManage/addEquipment/{{ defaults.storeNo }}">添加</a>				
+				<a class="c-icon page-head-operate page-head-operate-filter" ng-class="{'page-head-operate-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
 			</span>
 		</div>
 		<div class="mainContent-hd__bd">

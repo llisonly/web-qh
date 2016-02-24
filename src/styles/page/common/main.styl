@@ -1,85 +1,56 @@
 @import '../../core/var'
 @import '../../core/mixin'
 
-.global-top
-	position fixed
-	left 50%
-	top 0
-	z-index $zindex-page
-	margin-left -($container-width/2)px
-	height 44px
-	.container
-		background url('../images/bg_top.jpg') no-repeat
-		background-size 100% 100%
-		text-align right
+.sidebar--on 
+	width $layout-two-left-width-l
+.sidebar--off
+	width $layout-two-left-width-s
+	.logo 
+		font-size 0
 		
-.layout-container
-	margin-top 44px
-	
-.layout-two--left
-	position fixed
-	left auto
-	top 44px
-	z-index $zindex-page
-	
+.btn-sidebar
+	margin 225px 10px 0 0
+	display block
+	height 64px
+.btn-sidebar--on
+	background url('../images/slide_on.png') no-repeat right 50%	
+.btn-sidebar--off
+	background url('../images/slide_off.png') no-repeat 50% 50%
+		
 .logo
-	padding-left 52px
-	width 107px
-	height 44px
-	background url('../images/logo_s.png') no-repeat 13px #16a4fa
-	line-height 44px
+	display block
+	padding-left 52px			
+	height 49px
+	background url('../images/logo_s.png') no-repeat 15px #16a4fa
+	line-height 49px
 	text-align left
 	font-family arial
 	font-size 18px
 	color #fff
-
-.accountBar
-	display inline-block
-	margin-top 10px
-	padding 0 19px 0 13px
-	height 24px
-	border-left 1px solid #7b8288
-	line-height 24px
-	font-size 0
-	.account
-		width 16px
-		height 15px
-		background url('../images/icon/user.png') no-repeat
-		imerge icon
-		vertical-align -3px
-	.account-name
-		margin 0 11px 0 15px		
-		font-size 11px
-		color #cbcdce
-	.menu-down
-		width 11px
-		height 6px
-		background url('../images/icon/menu_down.png') no-repeat
-		imerge icon
-		vertical-align 1px
-
-.sidebar-nav
-	margin-top 30px
+	white-space nowrap
+		
+.sidebar-nav	
 	.active
 		a
 			background-color #1a191a
 			border-left 2px solid #16a4fa
 
-.sidebar-nav__item
-	height 40px
-	line-height 40px
+.sidebar-nav__item	
 	a
 		display block
 		padding-left 19px
+		height 40px
 		border-left 2px solid rgba(0,0,0,0)
+		line-height 40px
 		color #cbcdce
 		cursor pointer
+		white-space nowrap		
 		&:hover
 			background-color #1a191a
 			border-left 2px solid #16a4fa
 		.c-icon
-			margin-right 24px
-			width 26px	
+			margin-right 24px				
+			width 26px				
 
 .sidebar-nav__item--merchandiseManage
 	a
@@ -165,4 +136,13 @@
 		.c-icon
 			background url('../images/nav/staff_white_26×20.png') no-repeat
 			imerge nav
-					
+			
+.goTop	
+	position absolute
+	right 10px
+	bottom 105px
+	z-index $zindex-page
+	display none
+	width 36px
+	height 36px
+	background url('../images/sign_arrow_up_green.png') no-repeat

@@ -9,7 +9,7 @@ requirejs.config({
 		angularCookies: 'lib/angular-cookies/angular-cookies',
 		utils: 'core/utils',
 		datetimepicker: 'lib/jquery-datetimepicker/jquery.datetimepicker',
-		pagination: 'lib/jquery-pagination/jquery-pagination.min'	
+		pagination: 'lib/jquery-pagination/jquery-pagination.min'		
 	},
 	shim: {
 		'bootstrap': {
@@ -33,4 +33,6 @@ requirejs.config({
 	}	
 });
 
-require(['app']);
+define(['app'], function(){
+	require(['fx']);
+});

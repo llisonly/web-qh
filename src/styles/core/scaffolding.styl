@@ -55,26 +55,33 @@ input:-webkit-autofill
 
 //layout
 .layout-two
-	//overflow hidden
+	overflow hidden
 .layout-two--left
+	position fixed
+	left auto
+	top 0
+	z-index $zindex-page
 	float left
-	width 159px
-	min-height 600px
+	width $layout-two-left-width-s	
 	background url('../images/bg_left.jpg') no-repeat
 	background-size 100% 100%
+	padding-bottom 2000px
+	margin-bottom -2000px
+	overflow hidden	
+	
 .layout-two--right
-	margin-left 159px
-	min-height 600px
+	margin-left $layout-two-left-width-s
+	padding-bottom 2000px
+	margin-bottom -2000px	
 
 //mainContent
-.mainContent-hd
-	.page-title		
-		height 82px
-		line-height 82px
-		font-size 22px
-		color #252525
-	.page-icon
-		margin 0 13px 0 16px
+.mainContent-hd	
+	.page-title
+		margin-left 16px	
+		height 49px
+		line-height 49px
+		font-size 18px
+		color #252525	
 	.page-return		
 		width 32px
 		height 32px
@@ -84,8 +91,9 @@ input:-webkit-autofill
 		margin-left 22px
 		font-size 12px
 		color #acadad
-.mainContent-hd__hd
-	overflow hidden
+.mainContent-hd__hd	
+	height 49px
+	background #fff
 .mainContent-hd__ft
 	width 100%
 	height 6px
@@ -103,21 +111,21 @@ input:-webkit-autofill
 	background-repeat no-repeat 
 	background-position 50% 50%
 	
-//toolbar
-.toolbar
-	margin 26px 18px 0 0
+//page-head-operatebar
+.page-head-operatebar
+	margin 9px 9px 0 0
 	font-size 0
-	.tool
+	.page-head-operate
 		margin-left 18px
 		width 30px
 		height 30px
-	.tool-add
+	.page-head-operate-add
 		background url('../images/icon/circle_plus_blue.png') no-repeat
-		imerge icon	
-	.tool-filter
+		imerge icon
+	.page-head-operate-filter
 		background url('../images/icon/circle_filter_grey.png') no-repeat
 		imerge icon
-	.tool-filter--active
+	.page-head-operate-filter--active
 		background url('../images/icon/circle_filter_blue.png') no-repeat
 		imerge icon
 

@@ -47,7 +47,7 @@ define([], function(){
 				{id: 4, name: '门店管理', className: 'sidebar-nav__item--storeManage', state: 'main.storeManage.storeList', includeState: 'main.storeManage.*'},
 				{id: 5, name: '会员管理', className: 'sidebar-nav__item--memberManage', state: 'main.memberManage', includeState: 'main.memberManage.*'},
 				{id: 6, name: '员工管理', className: 'sidebar-nav__item--staffManage', state: 'main.staffManage.list', includeState: 'main.staffManage.*'}
-			];
+			];			
 
 			$scope.init = function(){
 				$scope.setRemember($scope.isRememberLogin);
