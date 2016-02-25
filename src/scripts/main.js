@@ -33,9 +33,4 @@ requirejs.config({
 	}	
 });
 
-define(['app'], function(){
-	setTimeout(function(){
-		require(['fx']);
-	},1000)
-	
-});
+require(['app']);

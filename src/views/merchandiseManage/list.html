@@ -38,40 +38,48 @@
 		</div>		
 	</div>
 	<div class="mainContent-bd">
-		<table class="c-table" ng-class="{'c-table--loading': loadingStatus}">
-			<thead>
-				<tr>
-					<th width="9%">商品编号</th>
-					<th width="9%">货号</th>
-					<th width="10%">商品名称</th>
-					<th width="10%">助记码</th>
-					<th width="15%">一级类别</th>
-					<th width="15%">二级类别</th>
-					<th class="tr" width="10%">建议零售价</th>					
-					<th class="tr" width="12%">皮重值</th>
-					<th class="tc" width="10%">操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-if="loadingStatus" class="loading-wrapper">
-					<td colspan="9"><loading></loading></td>
-				</tr>
-				<tr ng-repeat="o in pluList">
-					<td>{{ o.pluNo }}</td>
-					<td>{{ o.itemId }}</td>
-					<td>{{ o.pluName }}</td>
-					<td>{{ o.pluShortName }}</td>
-					<td>{{ findPluGroup(pluGroupList, o.parentPLUGroupId).pluGroupName }}</td>
-					<td>{{ findPluGroup(pluGroupList, o.pluGroupId).pluGroupName }}</td>
-					<td class="tr">{{ o.price }}<em class="price-unit">元/{{ o.unit |unit }}</em></td>					
-					<td class="tr">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit |unit }}</em></td>
-					<td class="tc">
-						<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="#/main/merchandiseManage/edit/{{ o.pluId }}">编辑</a>
-						<a class="ml20 c-icon c-icon-delete c-icon-delete--default	c-icon-delete--black" href="javascript:;" ng-click="showConfirm(o)">删除</a>
-					</td>
-				</tr>				
-			</tbody>
-		</table>
-		<div id="pagination" class="pagination"></div>
+		<div class="table--fixedTop">
+			<div id="J_affix" class="table--fixedTop-hd c-affix">
+				<table class="c-table">					
+					<thead>
+						<tr>
+							<th width="9%">商品编号</th>
+							<th width="9%">货号</th>
+							<th width="10%">商品名称</th>
+							<th width="10%">助记码</th>
+							<th width="15%">一级类别</th>
+							<th width="15%">二级类别</th>
+							<th class="tr" width="10%">建议零售价</th>					
+							<th class="tr" width="12%">皮重值</th>
+							<th class="tc" width="10%">操作</th>
+						</tr>
+					</thead>					
+				</table>
+			</div>
+			<div class="table--fixedTop-bd">
+				<table class="c-table">					
+					<tbody>
+						<tr ng-if="loadingStatus" class="loading-wrapper">
+							<td colspan="9"><loading></loading></td>
+						</tr>
+						<tr ng-repeat="o in pluList">
+							<td width="9%">{{ o.pluNo }}</td>
+							<td width="9%">{{ o.itemId }}</td>
+							<td width="10%">{{ o.pluName }}</td>
+							<td width="10%">{{ o.pluShortName }}</td>
+							<td width="15%">{{ findPluGroup(pluGroupList, o.parentPLUGroupId).pluGroupName }}</td>
+							<td width="15%">{{ findPluGroup(pluGroupList, o.pluGroupId).pluGroupName }}</td>
+							<td class="tr" width="10%">{{ o.price }}<em class="price-unit">元/{{ o.unit |unit }}</em></td>				
+							<td class="tr" width="12%">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit |unit }}</em></td>
+							<td class="tc" width="10%">
+								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="#/main/merchandiseManage/edit/{{ o.pluId }}">编辑</a>
+								<a class="ml20 c-icon c-icon-delete c-icon-delete--default	c-icon-delete--black" href="javascript:;" ng-click="showConfirm(o)">删除</a>
+							</td>
+						</tr>				
+					</tbody>
+				</table>
+				<div id="pagination" class="pagination"></div>
+			</div>
+		</div>		
 	</div>
 </div>

@@ -40,46 +40,54 @@
 		</div>		
 	</div>
 	<div class="mainContent-bd">
-		<table class="c-table" ng-class="{'c-table--loading': loadingStatus}">
-			<thead>
-				<tr>
-					<th width="8%">商品编号</th>
-					<th width="8%">货号</th>
-					<th width="8%">商品名称</th>
-					<th width="7%">助记码</th>
-					<th width="10%">一级类别</th>
-					<th width="10%">二级类别</th>
-					<th class="tr" width="10%">建议零售价</th>
-					<th class="tr" width="10%">当前零售价</th>					
-					<th class="tr" width="10%">当前会员价</th>					
-					<th class="tr" width="9%">皮重值</th>
-					<th class="tc" width="10%">操作</th>
-				</tr>
-			</thead>
-			<tbody ng-if="loadingStatus">
-				<tr class="loading-wrapper">
-					<td colspan="10"><loading></loading></td>
-				</tr>
-			</tbody>
-			<tbody ng-if="isShowPlu">				
-				<tr ng-repeat="o in pluList">
-					<td>{{ o.pluNo }}</td>
-					<td>{{ o.itemId }}</td>
-					<td>{{ o.pluName }}</td>
-					<td>{{ o.pluShortName }}</td>
-					<td>{{ findPluGroup(pluGroupList, o.parentPLUGroupId).pluGroupName }}</td>
-					<td>{{ findPluGroup(pluGroupList, o.pluGroupId).pluGroupName }}</td>
-					<td class="tr">{{ o.price }}<em class="price-unit">元/{{ o.unit | unit }}</em></td>
-					<td class="tr"><em class="currentPrice">{{ o.currentPrice }}<em class="price-unit" ng-if="o.currentPrice">元/{{ o.unit | unit }}</em></td>
-					<th class="tr"><em class="currentPrice">{{ o.currentVipPrice }}<em class="price-unit" ng-if="o.currentVipPrice">元/{{ o.unit | unit }}</em></th>
-					<td class="tr">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit | unit }}</em></td>
-					<td class="tc">
-						<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showEditPluForm(o)">编辑</a>
-					</td>
-				</tr>				
-			</tbody>
-		</table>
-		<div id="pagination" class="pagination" ng-show="isShowPlu"></div>
+		<div class="table--fixedTop">
+			<div id="J_affix" class="table--fixedTop-hd c-affix">
+				<table class="c-table">
+					<thead>
+						<tr>
+							<th width="8%">商品编号</th>
+							<th width="8%">货号</th>
+							<th width="8%">商品名称</th>
+							<th width="7%">助记码</th>
+							<th width="10%">一级类别</th>
+							<th width="10%">二级类别</th>
+							<th class="tr" width="10%">建议零售价</th>
+							<th class="tr" width="10%">当前零售价</th>					
+							<th class="tr" width="10%">当前会员价</th>					
+							<th class="tr" width="9%">皮重值</th>
+							<th class="tc" width="10%">操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		<div class="table--fixedTop-bd">
+			<table class="c-table" ng-class="{'c-table--loading': loadingStatus}">
+				<tbody ng-if="loadingStatus">
+					<tr class="loading-wrapper">
+						<td colspan="10"><loading></loading></td>
+					</tr>
+				</tbody>
+				<tbody ng-if="isShowPlu">				
+					<tr ng-repeat="o in pluList">
+						<td width="8%">{{ o.pluNo }}</td>
+						<td width="8%">{{ o.itemId }}</td>
+						<td width="8%">{{ o.pluName }}</td>
+						<td  width="7%">{{ o.pluShortName }}</td>
+						<td width="10%">{{ findPluGroup(pluGroupList, o.parentPLUGroupId).pluGroupName }}</td>
+						<td width="10%">{{ findPluGroup(pluGroupList, o.pluGroupId).pluGroupName }}</td>
+						<td class="tr" width="10%">{{ o.price }}<em class="price-unit">元/{{ o.unit | unit }}</em></td>
+						<td class="tr" width="10%"><em class="currentPrice">{{ o.currentPrice }}<em class="price-unit" ng-if="o.currentPrice">元/{{ o.unit | unit }}</em></td>
+						<th class="tr" width="10%"><em class="currentPrice">{{ o.currentVipPrice }}<em class="price-unit" ng-if="o.currentVipPrice">元/{{ o.unit | unit }}</em></th>
+						<td class="tr" width="9%">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit | unit }}</em></td>
+						<td class="tc" width="10%">
+							<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showEditPluForm(o)">编辑</a>
+						</td>
+					</tr>				
+				</tbody>
+			</table>
+			<div id="pagination" class="pagination" ng-show="isShowPlu"></div>
+		</div>		
 	</div>
 </div>
 

@@ -5,11 +5,13 @@ require([],function(){
 			$win = $(window),
 			$toolbar = $('#J_toolbar'),
 			$goTop = $('#J_goTop'),
+			$affixTarget = $('#J_affix'),
 			throttledwinScrollHandler;
 
 		function init(){
 			initSidebar();
 			bindEvent();
+			initAffix();			
 		}
 
 		function initSidebar(){
@@ -45,7 +47,7 @@ require([],function(){
 				$toolbar.fadeIn(500);
 			}else{
 				$toolbar.fadeOut(500);
-			}
+			}			
 		},100);
 
 		function goTopHandler(){
@@ -53,6 +55,14 @@ require([],function(){
 			return false;
 		}
 
+		function initAffix(){
+			$affixTarget.affix({
+				offset: {
+					top: $affixTarget.offset().top
+				}
+			});			
+		}
+		
 		init();
 	});
 });
