@@ -2,16 +2,15 @@ require([],function(){
 	$(function(){
 		var $sidebar = $('#J_sidebar'),
 			$sidebarBtn = $('#J_sidebar-control'),
-			$win = $(window),
-			$toolbar = $('#J_toolbar'),
+			$win = $(window),			
 			$goTop = $('#J_goTop'),
-			$affixTarget = $('#J_affix'),
+			$affix = $('#J_affix'),
 			throttledwinScrollHandler;
 
 		function init(){
 			initSidebar();
 			bindEvent();
-			initAffix();			
+			initAffix();
 		}
 
 		function initSidebar(){
@@ -44,9 +43,9 @@ require([],function(){
 
 		throttledwinScrollHandler = _.throttle(function(){			
 			if($win.scrollTop() > 100){
-				$toolbar.fadeIn(500);
+				$goTop.fadeIn(500);
 			}else{
-				$toolbar.fadeOut(500);
+				$goTop.fadeOut(500);
 			}			
 		},100);
 
@@ -56,9 +55,9 @@ require([],function(){
 		}
 
 		function initAffix(){
-			$affixTarget.affix({
+			$affix.affix({
 				offset: {
-					top: $affixTarget.offset().top
+					top: $affix.offset().top
 				}
 			});			
 		}

@@ -3,7 +3,7 @@
 		<div class="mainContent-hd__hd pr">
 			<h3 class="l page-title">商品价格<small class="summary">共 {{ defaults.pluCount }} 种商品</small></h3>
 			<span class="r page-head-operatebar">				
-				<a class="c-icon page-head-operate page-head-operate-filter" ng-class="{'page-head-operate-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+				<a class="c-icon page-head-operate page-head-operate-filter" ng-class="{'page-head-operate-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">筛选</a>
 			</span>
 			<select class="c-select c-select--large select-store" ng-model="defaults.storeId" ng-options="o.id as o.name for o in storeList">
 				<option value="">门店</option>

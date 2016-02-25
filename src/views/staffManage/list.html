@@ -2,9 +2,8 @@
 	<div class="mainContent-hd">
 		<div class="mainContent-hd__hd">
 			<h3 class="l page-title">员工管理<small class="summary">共 {{ defaults.staffCount }} 名用户</small></h3>
-			<span class="r page-head-operatebar">
-				<a class="c-icon page-head-operate page-head-operate-add" href="#/main/staffManage/add">添加</a>
-				<a class="c-icon page-head-operate page-head-operate-filter" ng-class="{'page-head-operate-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">搜索</a>
+			<span class="r page-head-operatebar">				
+				<a class="c-icon page-head-operate page-head-operate-filter" ng-class="{'page-head-operate-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">筛选</a>
 			</span>						
 		</div>
 		<div class="mainContent-hd__bd">
@@ -60,3 +59,4 @@
 		</div>
 	</div>
 </div>
+<a class="tool-add" href="#/main/staffManage/add"></a>
