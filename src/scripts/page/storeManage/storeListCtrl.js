@@ -2,10 +2,8 @@ define([], function(){
 		'use strict';
 		
 		var ctrl = ['$scope', 'factory', 'storeManageService', '$q', function($scope, factory, storeManageService, $q){
-			$scope.isShowAddStoreForm = false;
-			$scope.addStore = {};			
-			$scope.editStore = {};
-			$scope.editIndex = -1;
+			//form data
+			$scope.store = {};
 				
 			$scope.getStoreList = function(condition){
 				var deferred = $q.defer();
@@ -63,17 +61,7 @@ define([], function(){
 						});
 					}
 				});				
-			};
-
-			$scope.showEditStore = function(o, index){
-				$scope.editStoreForm.$setPristine();
-				$scope.editStore = angular.copy(o);
-				$scope.editStore.head = $scope.findStoreReceipt(o.id).head;
-				$scope.editStore.headId = $scope.findStoreReceipt(o.id).headId;
-				$scope.editStore.foot = $scope.findStoreReceipt(o.id).foot;
-				$scope.editStore.footId = $scope.findStoreReceipt(o.id).footId;
-				$scope.editIndex = index;
-			};
+			};			
 
 			$scope.doSaveEditStore = function(editStore, $event){
 				if($event && $event.which != 13) return;
@@ -146,45 +134,111 @@ define([], function(){
 				}	
 			};
 
-			$scope.doCancelEditStore = function(){
-				$scope.editIndex = -1;
+			$scope.showStoreForm = function(o){
+				$scope.storeForm.$setPristine();
+				$scope.isEditStore = o ? true : false;
+				$scope.store = o ? angular.copy(o) : {};
+				if($scope.isEditStore){
+					$scope.store.head = $scope.findStoreReceipt(o.id).head;
+					$scope.store.headId = $scope.findStoreReceipt(o.id).headId;
+					$scope.store.foot = $scope.findStoreReceipt(o.id).foot;
+					$scope.store.footId = $scope.findStoreReceipt(o.id).footId;
+				}
+				$('#J_modal-storeForm').modal('show');
 			};
 
-			$scope.showAddStoreForm = function(){
-				$scope.addStoreForm.$setPristine();
-				$scope.isShowAddStoreForm = true;
-			};
-
-			$scope.doSaveAddStore = function(addStore, $event){
+			$scope.doSaveStore = function(store, $event){
 				if($event && $event.which != 13) return;
-				factory.validateForm($scope, $scope.addStoreForm);
-				if($scope.addStoreForm.$valid){
-					storeManageService.createStore(addStore, function(data){
-						var storeId = data;
-						if(_.isNumber(storeId)){
-							storeManageService.createStoreReceipt({storeNo: storeId, type: 1, text: addStore.head}, function(data){
-								storeManageService.createStoreReceipt({storeNo: storeId, type: 2, text: addStore.foot}, function(data){
-									factory.showDialog({
-										type: 'success',
-										text: '添加成功',
-										closeCallback: function(e){
-											$scope.doCancelAddStore();
-											$scope.getStoreReceiptList().then(function(){
-												$scope.getStoreList();
-											});
-										}
+				factory.validateForm($scope, $scope.storeForm);
+				if($scope.storeForm.$valid){
+					if(!$scope.isEditStore){
+						storeManageService.createStore(store, function(data){
+							var storeId = data;
+							if(_.isNumber(storeId)){
+								storeManageService.createStoreReceipt({storeNo: storeId, type: 1, text: store.head}, function(data){
+									storeManageService.createStoreReceipt({storeNo: storeId, type: 2, text: store.foot}, function(data){
+										$('#J_modal-storeForm').modal('hide');
+										factory.showDialog({
+											type: 'success',
+											text: '添加成功',
+											closeCallback: function(e){											
+												$scope.getStoreReceiptList().then(function(){
+													$scope.getStoreList();
+												});
+											}
+										});
 									});
 								});
-							});
-						}
-					});
+							}
+						});
+					}else{
+						storeManageService.updateStore(store.id, store, function(data){
+							var storeId = store.id;
+							if(store.headId){
+								storeManageService.updateStoreReceipt(store.headId, {id: store.headId, storeNo: storeId, type: 1, text: store.head}, function(data){
+									if(store.footId){
+										storeManageService.updateStoreReceipt(store.footId, {id: store.footId, storeNo: storeId, type: 2, text: store.foot}, function(data){
+											$('#J_modal-storeForm').modal('hide');
+											factory.showDialog({
+												type: 'success',
+												text: '修改成功',
+												closeCallback: function(e){													
+													$scope.getStoreReceiptList().then(function(){
+														$scope.getStoreList();
+													});
+												}
+											});
+										});
+									}else{
+										storeManageService.createStoreReceipt({id: store.footId, storeNo: storeId, type: 2, text: store.foot}, function(data){
+											$('#J_modal-storeForm').modal('hide');
+											factory.showDialog({
+												type: 'success',
+												text: '修改成功',
+												closeCallback: function(e){													
+													$scope.getStoreReceiptList().then(function(){
+														$scope.getStoreList();
+													});
+												}
+											});
+										});
+									}
+								});
+							}else{
+								storeManageService.createStoreReceipt({id: store.headId, storeNo: storeId, type: 1, text: store.head}, function(data){
+									if(store.footId){
+										storeManageService.updateStoreReceipt(store.footId, {id: store.footId, storeNo: storeId, type: 2, text: store.foot}, function(data){
+											$('#J_modal-storeForm').modal('hide');
+											factory.showDialog({
+												type: 'success',
+												text: '修改成功',
+												closeCallback: function(e){													
+													$scope.getStoreReceiptList().then(function(){
+														$scope.getStoreList();
+													});
+												}
+											});
+										});
+									}else{
+										storeManageService.createStoreReceipt({id: store.footId, storeNo: storeId, type: 2, text: store.foot}, function(data){
+											$('#J_modal-storeForm').modal('hide');
+											factory.showDialog({
+												type: 'success',
+												text: '修改成功',
+												closeCallback: function(e){													
+													$scope.getStoreReceiptList().then(function(){
+														$scope.getStoreList();
+													});
+												}
+											});
+										});
+									}
+								});
+							}						
+						});
+					}
 				}
-			};
-
-			$scope.doCancelAddStore = function(){
-				$scope.isShowAddStoreForm = false;
-				$scope.addStore = {};				
-			};
+			};			
 
 			$scope.init = function(){
 				$q.when($scope.getStoreReceiptList()).then(function(){

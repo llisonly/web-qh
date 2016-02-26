@@ -30,15 +30,15 @@
 		<loading ng-if="loadingStatus"></loading>
 		<div class="mod-boxList clearfix">			
 			<div class="mod-boxList__item" ng-repeat="o in memberList track by $index">
-				<form class="form-horizontal" ng-if="$index != editIndex">
+				<form class="form-horizontal">
 					<div class="mod-box--second mod-box--second--green" ng-class="{'mod-box--second--male': o.gender == 1, 'mod-box--second--female' : o.gender == 2}">
 						<div class="mod-box--second-hd">
 							<span class="name"></span>
 							<span class="r">
 								<i class="c-icon c-icon-info c-icon-info--default c-icon-info--grey" ng-if="o.comment" title="{{ o.comment }}"></i>
-								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showEditMember(o, $index)"></a>
+								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showMemberForm(o)"></a>
 								<a class="c-icon c-icon-close" href="javascript:;" ng-click="deleteMember(o)"></a>
-							</span>						
+							</span>
 						</div>
 						<div class="mod-box--second-bd">
 							<ul>
@@ -99,21 +99,103 @@
 							</div>
 						</div>
 					</div>
-				</form>
-				<div ng-show="$index == editIndex" ng-include="'editMember.html'"></div>
-			</div>
-			<div class="mod-boxList__item">
-				<div class="mod-box-add--first" ng-if="!isShowAddMemberForm">
-					<a href="javascript:;" ng-click="showAddMemberForm()"></a>
-				</div>
-				<div ng-show="isShowAddMemberForm" ng-include="'addMember.html'"></div>				
-			</div>				
+				</form>				
+			</div>							
 		</div>
 	</div>
 </div>
-<a class="tool-add" href="javascript:;"></a>
+<a class="tool-add" href="javascript:;" ng-click="showMemberForm()"></a>
 
-<!-- 充值弹窗 -->
+<!-- 添加、修改会员 -->
+<div id="J_modal-memberForm" class="modal fade c-modal c-modal-form c-modal-form--large" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	      		<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>	      		
+		        <h4 class="modal-title" ng-if="!isEditMember">添加会员</h4>
+		        <h4 class="modal-title" ng-if="isEditMember">编辑会员</h4>
+	      	</div>
+	   		<div class="modal-body clearfix">
+	   			<form class="form-horizontal" name="memberForm" ng-value="memberForm = memberForm" ng-keyup="doSaveMember(member, $event)">
+	   				<div class="form-row">
+						<div class="control-group">
+							<label class="control-label">姓名</label>
+							<div class="controls">
+								<input class="c-input c-input--middle" type="text" name="name" ng-model="member.name" required ng-maxlength="45" />
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="memberForm.name.$dirty && memberForm.name.$error.required">
+									姓名不能为空
+									<i class="triangle-down"></i>
+								</span>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="memberForm.name.$dirty && memberForm.name.$error.maxlength">
+									姓名不能超过45个字符
+									<i class="triangle-down"></i>
+								</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">电话</label>
+							<div class="controls">
+								<input class="c-input c-input--middle" type="text" name="phone" ng-model="member.phone" required />
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="memberForm.phone.$dirty && memberForm.phone.$error.required">
+									电话不能为空
+									<i class="triangle-down"></i>
+								</span>								
+							</div>
+						</div>
+	   				</div>
+	   				<div class="form-row">
+						<div class="control-group">
+							<label class="control-label">性别</label>
+							<div class="controls">
+								<select class="c-select c-select--middle" name="gender" ng-model="member.gender" ng-options="o.key as o.value for o in genderList" required>
+									<option value="">请选择</option>
+								</select>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="memberForm.gender.$dirty && memberForm.gender.$error.required">
+									性别不能为空
+									<i class="triangle-down"></i>
+								</span>								
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">生日</label>
+							<div class="controls">
+								<input class="c-input c-input--middle" type="text" name="birthday" ng-model="member.birthday" ui-datetimepicker />
+							</div>
+						</div>
+	   				</div>
+	   				<div class="form-row">
+						<div class="control-group">
+							<label class="control-label">备注</label>
+							<div class="controls">
+								<textarea class="c-textarea c-textarea--large" placeholder="请输入备注" name="comment" ng-model="member.comment" ng-maxlength="1000"></textarea>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="memberForm.comment.$dirty && memberForm.comment.$error.maxlength">
+									备注不能超过1000个字符
+									<i class="triangle-down"></i>
+								</span>
+							</div>
+						</div>
+	   				</div>
+	   				<div class="form-row mt15 tc">
+	   					<span class="member-amount">
+	   						余额<em>{{ member.savingAmount || 0 }}</em>元
+	   					</span>
+	   					<span class="member-amount">
+	   						已用储值<em>{{ member.savingUsedAmount || 0 }}</em>元
+	   					</span>
+	   				</div>
+	   			</form>
+		    </div>
+		    <div class="modal-footer">
+		    	<div class="c-btn-group">
+		    		<a class="c-btn c-btn--small c-btn--blue" ng-click="doSaveMember(member)">确定</a>
+		        	<a class="ml5 c-btn c-btn--small" data-dismiss="modal">取消</a>
+		    	</div>
+		    </div>
+	    </div>
+	</div>
+</div>
+
+<!-- 充值 -->
 <div id="J_modal-rechargeForm" class="modal fade c-modal c-modal-form" role="dialog">
   	<div class="modal-dialog">
 	    <div class="modal-content">
@@ -147,7 +229,7 @@
 	</div>
 </div>
 
-<!-- 修改密码弹窗 -->
+<!-- 修改密码 -->
 <div id="J_modal-updatePasswordForm" class="modal fade c-modal c-modal-form" role="dialog">
   	<div class="modal-dialog">
 	    <div class="modal-content">
@@ -192,213 +274,3 @@
 	    </div>
 	</div>
 </div>
-
-<!-- 添加会员 -->
-<script type="text/ng-template" id="addMember.html">
-	<form class="form-horizontal" name="addMemberForm" ng-value="$parent.addMemberForm = addMemberForm" ng-keyup="doSaveMember(addMember, $event)">
-		<div class="mod-box--second mod-box--second--red mod-box--second--female">
-			<div class="mod-box--second-hd">
-				<span class="name"></span>
-				<span class="r">
-					<a class="c-icon c-icon-save c-icon-save--default c-icon-save--grey" href="javascript:;" ng-click="doSaveMember(addMember)"></a>
-					<a class="c-icon c-icon-close" href="javascript:;" ng-click="doCancelSaveMember()"></a>
-				</span>						
-			</div>
-			<div class="mod-box--second-bd">
-				<ul>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">姓名：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="name" ng-model="addMember.name" required ng-maxlength="45" />
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="addMemberForm.name.$dirty && addMemberForm.name.$error.required">
-										姓名不能为空
-										<i class="triangle-down"></i>
-									</span>
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="addMemberForm.name.$dirty && addMemberForm.name.$error.maxlength">
-										姓名不能超过45个字符
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="l size1of2">
-							<div class="control-group control-group--right">
-								<label class="control-label">余额：</label>
-								<div class="controls">
-									<em class="cash">0</em>元
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">电话：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="phone" ng-model="addMember.phone" required />
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="addMemberForm.phone.$dirty && addMemberForm.phone.$error.required">
-										电话不能为空
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
-						</div>									
-					</li>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">性别：</label>
-								<div class="controls">
-									<select class="c-select c-select--small" name="gender" ng-model="addMember.gender" ng-options="o.key as o.value for o in genderList" required>
-										<option value="">请选择</option>
-									</select>
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="addMemberForm.gender.$dirty && addMemberForm.gender.$error.required">
-										性别不能为空
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="l size1of2">
-							<div class="control-group control-group--right">
-								<label class="control-label">已用储值：</label>
-								<div class="controls">
-									<em class="cash">0</em>元
-								</div>
-							</div>
-						</div>									
-					</li>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">出生年月：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="birthday" ng-model="addMember.birthday" ui-datetimepicker />
-								</div>
-							</div>
-						</div>										
-					</li>
-				</ul>			
-			</div>
-			<div class="mod-box--second-ft">
-				<div class="control-group">
-					<label class="control-label"><i class="c-icon c-icon-info c-icon-info--default c-icon-info--grey"></i>备注：</label>
-					<div class="controls">
-						<textarea class="c-textarea c-textarea--default" placeholder="请输入备注" name="comment" ng-model="addMember.comment" ng-maxlength="1000"></textarea>
-						<span class="c-help c-help-block c-help-block--tooltip" ng-if="addMemberForm.name.$dirty && addMemberForm.name.$error.maxlength">
-							备注不能超过1000个字符
-							<i class="triangle-down"></i>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-</script>
-
-<!-- 编辑会员 -->
-<script type="text/ng-template" id="editMember.html">
-	<form class="form-horizontal" name="editMemberForm" ng-value="$parent.$parent.editMemberForm = editMemberForm" ng-keyup="doEditMember(editMember, $event)">
-		<div class="mod-box--second mod-box--second--red" ng-class="{'mod-box--second--male': editMember.gender == 1, 'mod-box--second--female' : editMember.gender == 2}">
-			<div class="mod-box--second-hd">
-				<span class="name"></span>
-				<span class="r">
-					<a class="c-icon c-icon-save c-icon-save--default c-icon-save--grey" href="javascript:;" ng-click="doEditMember(editMember)"></a>
-					<a class="c-icon c-icon-close" href="javascript:;" ng-click="doCancelEditMember()"></a>
-				</span>						
-			</div>
-			<div class="mod-box--second-bd">
-				<ul>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">姓名：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="name" ng-model="editMember.name" required ng-maxlength="45" />
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="editMemberForm.name.$dirty && editMemberForm.name.$error.required">
-										姓名不能为空
-										<i class="triangle-down"></i>
-									</span>
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="editMemberForm.name.$dirty && editMemberForm.name.$error.maxlength">
-										姓名不能超过45个字符
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="l size1of2">
-							<div class="control-group control-group--right">
-								<label class="control-label">余额：</label>
-								<div class="controls">
-									<em class="cash">{{ editMember.savingAmount }}</em>元
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">电话：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="phone" ng-model="editMember.phone" required />
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="editMemberForm.phone.$dirty && editMemberForm.phone.$error.required">
-										电话不能为空
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
-						</div>									
-					</li>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">性别：</label>
-								<div class="controls">
-									<select class="c-select c-select--small" name="gender" ng-model="editMember.gender" ng-options="o.key as o.value for o in genderList" required>
-										<option value="">请选择</option>										
-									</select>
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="editMemberForm.gender.$dirty && editMemberForm.gender.$error.required">
-										性别不能为空
-										<i class="triangle-down"></i>
-									</span>										
-								</div>
-							</div>
-						</div>								
-						<div class="l size1of2">
-							<div class="control-group control-group--right">
-								<label class="control-label">已用储值：</label>
-								<div class="controls">
-									<em class="cash">{{ editMember.savingUsedAmount }}</em>元
-								</div>
-							</div>
-						</div>									
-					</li>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">出生年月：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="birthday" ng-model="editMember.birthday" ui-datetimepicker />
-								</div>
-							</div>
-						</div>										
-					</li>
-				</ul>			
-			</div>
-			<div class="mod-box--second-ft">
-				<div class="control-group">
-					<label class="control-label"><i class="c-icon c-icon-info c-icon-info--default c-icon-info--grey"></i>备注：</label>
-					<div class="controls">
-						<textarea class="c-textarea c-textarea--default" placeholder="请输入备注" name="comment" ng-model="editMember.comment" ng-maxlength="1000"></textarea>
-						<span class="c-help c-help-block c-help-block--tooltip" ng-if="editMemberForm.name.$dirty && editMemberForm.name.$error.maxlength">
-							备注不能超过1000个字符
-							<i class="triangle-down"></i>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-</script>

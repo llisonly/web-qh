@@ -10,12 +10,12 @@
 		<loading ng-if="loadingStatus"></loading>
 		<div class="mod-boxList clearfix">
 			<div class="mod-boxList__item" ng-repeat="o in storeList">
-				<form class="form-horizontal" ng-if="$index != editIndex">
+				<form class="form-horizontal">
 					<div class="mod-box--second mod-box--second--red">
 						<div class="mod-box--second-hd">
 							<span class="name">{{ o.name }}</span>
 							<span class="r">
-								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showEditStore(o, $index)"></a>
+								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="javascript:;" ng-click="showStoreForm(o)"></a>
 								<a class="c-icon c-icon-close" href="javascript:;" ng-click="doDeleteStore(o)"></a>
 							</span>						
 						</div>
@@ -70,213 +70,107 @@
 							<div class="l size1of2 preBox"></div>
 						</div>				
 					</div>
-				</form>
-				<div ng-show="$index == editIndex" ng-include="'editStore.html'"></div>
-			</div>				
-			<div class="mod-boxList__item">
-				<div class="mod-box-add--first" ng-if="!isShowAddStoreForm">
-					<a href="javascript:;" ng-click="showAddStoreForm()"></a>
-				</div>
-				<div ng-show="isShowAddStoreForm" ng-include="'addStore.html'"></div>
-			</div>				
+				</form>				
+			</div>
 		</div>
 	</div>
 </div>
+<a class="tool-add" href="javascript:;" ng-click="showStoreForm()"></a>
 
-<!-- 添加门店 -->
-<script type="text/ng-template" id="addStore.html">
-	<form class="form-horizontal" name="addStoreForm" ng-value="$parent.$parent.addStoreForm = addStoreForm" ng-keyup="doSaveAddStore(addStore, $event)">
-		<div class="mod-box--second">
-			<div class="mod-box--second-hd">
-				<div class="c-help-wrapper l">
-					<span class="name"><input class="c-input c-input--large" type="text" name="name" ng-model="addStore.name" ng-maxlength="45" required/></span>
-					<span class="c-help c-help-block c-help-block--tooltip" ng-if="addStoreForm.name.$dirty && addStoreForm.name.$error.required">
-						门店名称不能为空
-						<i class="triangle-down"></i>
-					</span>
-					<span class="c-help c-help-block c-help-block--tooltip" ng-if="addStoreForm.name.$dirty && addStoreForm.name.$error.maxlength">
-						门店名称不能超过45个字符
-						<i class="triangle-down"></i>
-					</span>
-				</div>
-				<span class="r">
-					<a class="c-icon c-icon-save c-icon-save--default c-icon-save--grey" href="javascript:;" ng-click="doSaveAddStore(addStore)"></a>
-					<a class="c-icon c-icon-close" href="javascript:;" ng-click="doCancelAddStore()"></a>
-				</span>						
-			</div>
-			<div class="mod-box--second-bd">
-				<ul>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">门店号：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="storeNo" ng-model="addStore.storeNo" required/>
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="addStoreForm.storeNo.$dirty && addStoreForm.storeNo.$error.required">
-										门店号不能为空
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="l size1of2">
-							<div class="control-group control-group--right">
-								<label class="control-label">设备数量：</label>
-								<div class="controls"></div>
-							</div>
-						</div>
-					</li>
-					<li class="clearfix">						
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">门店电话：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="phone" ng-model="addStore.phone" />
-								</div>
-							</div>									
-						</div>
-					</li>
-					<li class="clearfix">
+<!-- 添加、编辑门店 -->
+<div id="J_modal-storeForm" class="modal fade c-modal c-modal-form c-modal-form--large" role="dialog">
+  	<div class="modal-dialog">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	      		<a class="r c-icon c-icon-close" href="javascript:;" data-dismiss="modal" aria-label="Close"></a>	      		
+		        <h4 class="modal-title" ng-if="!isEditStore">添加门店</h4>
+		        <h4 class="modal-title" ng-if="isEditStore">编辑门店</h4>
+	      	</div>
+	   		<div class="modal-body clearfix">
+	   			<form class="form-horizontal" name="storeForm" ng-value="storeForm = storeForm" ng-keyup="doSaveStore(store, $event)">
+	   				<div class="form-row">
 						<div class="control-group">
-							<label class="control-label">小票标头：</label>
+							<label class="control-label">门店名称</label>
 							<div class="controls">
-								<input class="c-input c-input--xxlarge" type="text" name="head" ng-model="addStore.head" ng-maxlenght="200" />
-								<span class="c-help c-help-block c-help-block--tooltip" ng-if="addStoreForm.head.$dirty && addStoreForm.head.$error.maxlength">
+								<input class="c-input c-input--middle" type="text" name="name" ng-model="store.name" ng-maxlength="45" required />
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="storeForm.name.$dirty && storeForm.name.$error.required">
+									门店姓名不能为空
+									<i class="triangle-down"></i>
+								</span>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="storeForm.name.$dirty && storeForm.name.$error.maxlength">
+									门店姓名不能超过45个字符
+									<i class="triangle-down"></i>
+								</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">门店号</label>
+							<div class="controls">
+								<input class="c-input c-input--middle" type="text" name="storeNo" ng-model="store.storeNo" required />
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="storeForm.storeNo.$dirty && storeForm.storeNo.$error.required">
+									门店号不能为空
+									<i class="triangle-down"></i>
+								</span>								
+							</div>
+						</div>
+	   				</div>
+	   				<div class="form-row">
+						<div class="control-group">
+							<label class="control-label">门店电话</label>
+							<div class="controls">
+								<input class="c-input c-input--middle" type="text" name="phone" ng-model="store.phone" />
+							</div>
+						</div>
+						<!-- <div class="control-group">
+							<label class="control-label">设备数量</label>
+							<div class="controls">
+							</div>
+						</div> -->
+	   				</div>
+	   				<div class="form-row">
+						<div class="control-group">
+							<label class="control-label">小票标头</label>
+							<div class="controls">
+								<textarea class="c-textarea c-textarea--large" name="head" ng-model="store.head" ng-maxlength="200"></textarea>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="storeForm.head.$dirty && storeForm.head.$error.maxlength">
 									小票标头不能超过200个字符
 									<i class="triangle-down"></i>
 								</span>
 							</div>
 						</div>
-					</li>
-					<li class="clearfix">
+					</div>
+					<div class="form-row">	
 						<div class="control-group">
-							<label class="control-label">小票脚注：</label>
+							<label class="control-label">小票脚注</label>
 							<div class="controls">
-								<input class="c-input c-input--xxlarge" type="text" name="foot" ng-model="addStore.foot" ng-maxlength="200" />
-								<span class="c-help c-help-block c-help-block--tooltip" ng-if="addStoreForm.foot.$dirty && addStoreForm.foot.$error.maxlength">
+								<textarea class="c-textarea c-textarea--large" name="foot" ng-model="store.foot" ng-maxlength="200"></textarea>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="storeForm.foot.$dirty && storeForm.foot.$error.maxlength">
 									小票脚注不能超过200个字符
 									<i class="triangle-down"></i>
 								</span>
 							</div>
-						</div>									
-					</li>
-					<li class="clearfix">
+						</div>
+	   				</div>
+	   				<div class="form-row">	
 						<div class="control-group">
-							<label class="control-label">门店地址：</label>
+							<label class="control-label">门店地址</label>
 							<div class="controls">
-								<input class="c-input c-input--xxlarge" type="text" name="address" ng-model="addStore.address" ng-maxlength="45" />
-								<span class="c-help c-help-block c-help-block--tooltip" ng-if="addStoreForm.address.$dirty && addStoreForm.address.$error.maxlength">
+								<textarea class="c-textarea c-textarea--large" name="address" ng-model="store.address" ng-maxlength="45"></textarea>
+								<span class="c-help c-help-block c-help-block--tooltip" ng-if="storeForm.address.$dirty && storeForm.address.$error.maxlength">
 									门店地址不能超过45个字符
 									<i class="triangle-down"></i>
 								</span>
 							</div>
-						</div>									
-					</li>
-				</ul>			
-			</div>
-			<div class="mod-box--second-ft clearfix">
-				<div class="l size1of2 preBox"></div>
-				<div class="l size1of2 preBox"></div>
-			</div>				
-		</div>
-	</form>
-</script>
-
-<!-- 编辑门店 -->
-<script type="text/ng-template" id="editStore.html">
-	<form class="form-horizontal" name="editStoreForm" ng-value="$parent.$parent.editStoreForm = editStoreForm" ng-keyup="doSaveEditStore(editStore, $event)">
-		<div class="mod-box--second">
-			<div class="mod-box--second-hd">
-				<div class="c-help-wrapper l">
-					<span class="name"><input class="c-input c-input--large" type="text" name="name" ng-model="editStore.name" ng-maxlength="45" required/></span>
-					<span class="c-help c-help-block c-help-block--tooltip" ng-if="editStoreForm.name.$dirty && editStoreForm.name.$error.required">
-						门店名称不能为空
-						<i class="triangle-down"></i>
-					</span>
-					<span class="c-help c-help-block c-help-block--tooltip" ng-if="editStoreForm.name.$dirty && editStoreForm.name.$error.maxlength">
-						门店名称不能超过45个字符
-						<i class="triangle-down"></i>
-					</span>
-				</div>
-				<span class="r">
-					<a class="c-icon c-icon-save c-icon-save--default c-icon-save--grey" href="javascript:;" ng-click="doSaveEditStore(editStore)"></a>
-					<a class="c-icon c-icon-close" href="javascript:;" ng-click="doCancelEditStore()"></a>
-				</span>						
-			</div>
-			<div class="mod-box--second-bd">
-				<ul>
-					<li class="clearfix">
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">门店号：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="storeNo" ng-model="editStore.storeNo" required/>
-									<span class="c-help c-help-block c-help-block--tooltip" ng-if="editStoreForm.storeNo.$dirty && editStoreForm.storeNo.$error.required">
-										门店号不能为空
-										<i class="triangle-down"></i>
-									</span>
-								</div>
-							</div>
 						</div>
-						<div class="l size1of2">
-							<div class="control-group control-group--right">
-								<label class="control-label">设备数量：</label>
-								<div class="controls"></div>
-							</div>
-						</div>
-					</li>
-					<li class="clearfix">						
-						<div class="l size1of2">
-							<div class="control-group">
-								<label class="control-label">门店电话：</label>
-								<div class="controls">
-									<input class="c-input c-input--small" type="text" name="phone" ng-model="editStore.phone" />
-								</div>
-							</div>									
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="control-group">
-							<label class="control-label">小票标头：</label>
-							<div class="controls">
-								<input class="c-input c-input--xxlarge" type="text" name="head" ng-model="editStore.head" ng-maxlenght="200" />
-								<span class="c-help c-help-block c-help-block--tooltip" ng-if="editStoreForm.head.$dirty && editStoreForm.head.$error.maxlength">
-									小票标头不能超过200个字符
-									<i class="triangle-down"></i>
-								</span>
-							</div>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="control-group">
-							<label class="control-label">小票脚注：</label>
-							<div class="controls">
-								<input class="c-input c-input--xxlarge" type="text" name="foot" ng-model="editStore.foot" ng-maxlength="200" />
-								<span class="c-help c-help-block c-help-block--tooltip" ng-if="editStoreForm.foot.$dirty && editStoreForm.foot.$error.maxlength">
-									小票脚注不能超过200个字符
-									<i class="triangle-down"></i>
-								</span>
-							</div>
-						</div>									
-					</li>
-					<li class="clearfix">
-						<div class="control-group">
-							<label class="control-label">门店地址：</label>
-							<div class="controls">
-								<input class="c-input c-input--xxlarge" type="text" name="address" ng-model="editStore.address" ng-maxlength="45" />
-								<span class="c-help c-help-block c-help-block--tooltip" ng-if="editStoreForm.address.$dirty && editStoreForm.address.$error.maxlength">
-									门店地址不能超过45个字符
-									<i class="triangle-down"></i>
-								</span>
-							</div>
-						</div>									
-					</li>
-				</ul>			
-			</div>
-			<div class="mod-box--second-ft clearfix">
-				<div class="l size1of2 preBox"></div>
-				<div class="l size1of2 preBox"></div>
-			</div>				
-		</div>
-	</form>
-</script>
+	   				</div>   				
+	   			</form>
+		    </div>
+		    <div class="modal-footer">
+		    	<div class="c-btn-group">
+		    		<a class="c-btn c-btn--small c-btn--blue" ng-click="doSaveStore(store)">确定</a>
+		        	<a class="ml5 c-btn c-btn--small" data-dismiss="modal">取消</a>
+		    	</div>
+		    </div>
+	    </div>
+	</div>
+</div>

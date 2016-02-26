@@ -6,13 +6,11 @@ define([
 		var ctrl = ['$scope', '$state', 'memberManageService', '$cookies', 'factory', 'constants', function($scope, $state, memberManageService, $cookies, factory, constants){
 			//默认显示搜索栏
 			$scope.isShowSearchbar = true;			
-			$scope.search = {};
-			$scope.addMember = {};
-			$scope.editMember = {};
-			$scope.isShowAddMemberForm = false;
+			$scope.search = {};			
 			$scope.defaults = {};
 
 			//form data
+			$scope.member = {};			
 			$scope.recharge = {};
 			$scope.password ={};
 
@@ -51,32 +49,6 @@ define([
 				$scope.throttledSearch();
 			},true);
 
-			$scope.showEditMember = function(o, index){
-				$scope.editIndex = index;
-				$scope.editMember = angular.copy(o);
-				if($scope.editMember.birthday) $scope.editMember.birthday = factory.formatISODate($scope.editMember.birthday);
-			};
-
-			$scope.doEditMember = function(editMember, $event){
-				if($event && $event.which !== 13) return;
-				factory.validateForm($scope, $scope.editMemberForm);
-				if($scope.editMemberForm.$valid){
-					memberManageService.updateMember(editMember.customerId, editMember, function(data){
-						factory.showDialog({
-							type: 'success',
-							text: '修改成功',
-							closeCallback: function(e){
-								$scope.doCancelEditMember();
-								$scope.getMemberList($scope.search);
-							}
-						});
-					});
-				}
-			};
-
-			$scope.doCancelEditMember = function(){
-				$scope.editIndex = -1;
-			};
 
 			$scope.deleteMember = function(o){
 				factory.showDialog({
@@ -96,32 +68,43 @@ define([
 				})
 			};
 
-			$scope.showAddMemberForm = function(){
-				$scope.addMemberForm.$setPristine();
-				$scope.isShowAddMemberForm = true;				
+			$scope.showMemberForm = function(o){
+				$scope.memberForm.$setPristine();
+				$scope.isEditMember = o ? true : false;
+				$scope.member = o ? angular.copy(o) : {};
+				if($scope.member.birthday) $scope.member.birthday = factory.formatISODate($scope.member.birthday);
+				$('#J_modal-memberForm').modal('show');							
 			};
 
 			$scope.doSaveMember = function(member, $event){
 				if($event && $event.which !== 13) return;
-				factory.validateForm($scope, $scope.addMemberForm);
-				if($scope.addMemberForm.$valid){
-					memberManageService.createMember(member, function(data){
-						factory.showDialog({
-							type: 'success',
-							text: '添加成功',
-							closeCallback: function(e){
-								$scope.defaults.memberCount += 1;
-								$scope.doCancelSaveMember();
-								$scope.getMemberList($scope.search);
-							}
+				factory.validateForm($scope, $scope.memberForm);
+				if($scope.memberForm.$valid){
+					if(!$scope.isEditMember){
+						memberManageService.createMember(member, function(data){
+							$('#J_modal-memberForm').modal('hide');
+							factory.showDialog({
+								type: 'success',
+								text: '添加成功',
+								closeCallback: function(e){
+									$scope.defaults.memberCount += 1;								
+									$scope.getMemberList($scope.search);
+								}
+							});
 						});
-					});			
+					}else{
+						memberManageService.updateMember(member.customerId, member, function(data){
+							$('#J_modal-memberForm').modal('hide');
+							factory.showDialog({
+								type: 'success',
+								text: '修改成功',
+								closeCallback: function(e){									
+									$scope.getMemberList($scope.search);
+								}
+							});
+						});
+					}								
 				}
-			};
-
-			$scope.doCancelSaveMember = function(){
-				$scope.isShowAddMemberForm = false;
-				$scope.addMember = {};
 			};
 
 			$scope.showRechargeForm = function(o){
