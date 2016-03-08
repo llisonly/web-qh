@@ -1,8 +1,5 @@
 <div class="login-overlay">
-	<p class="copyright">Copyright © 2015 QIHENG  启衡版权所有</p>
-</div>
-<div class="container pr">
-	<div class="row row-login">
+	<div class="login-box">	
 		<h1 class="login-logo">
 			<img src="{{qhConfig.staticUrl}}/images/logo.png" width="64" height="63" />
 			<span class="login-store-name">Store Name</span>
@@ -10,7 +7,7 @@
 		<form class="form-horizontal login-form" name="login" ng-value="loginForm = login">
 			<div class="control-group">
 				<label class="control-label"></label>
-				<div class="controls">
+				<div class="controls pr">
 					<span class="login-input-group login-input-group--account">
 						<input class="input-text" ng-model="user.account" type="text" name="uaccount" placeholder="用户名" required/>
 					</span>
@@ -25,7 +22,7 @@
 			</div>
 			<div class="control-group">
 				<label class="control-label"></label>
-				<div class="controls">
+				<div class="controls pr">
 					<span class="login-input-group login-input-group--password">
 						<input class="input-text" ng-model="user.password" type="password" name="upassword" placeholder="密码" required />
 					</span>
@@ -42,7 +39,7 @@
 				<label class="control-label"></label>
 				<div class="controls">
 					<span class="login-remember" ng-click="doRememberLogin()">
-						<i class="c-checkbox c-checkbox--large" ng-class="{'c-checkbox--checked--blue': isRememberLogin, 'c-checkbox--unchecked--white': !isRememberLogin}"></i>
+						<i class="c-checkbox c-checkbox--large" ng-class="{'c-checkbox--checked--grey': isRememberLogin, 'c-checkbox--unchecked--grey': !isRememberLogin}"></i>
 						记住此次登录
 					</span>
 				</div>
@@ -52,6 +49,7 @@
 					<a class="c-btn login-btn" href="javascript:;" ng-click="doLogin(user)">登录</a>
 				</div>
 			</div>
-		</form>
-	</div>	
+		</form>	
+	</div>
+	<p class="copyright">Copyright © 2015 QIHENG  启衡版权所有</p>
 </div>

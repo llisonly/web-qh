@@ -3,22 +3,26 @@
 
 .login-overlay
 	position fixed
+	display flex
 	width 100%
 	height 100%	
-	background url('../images/bg_login.jpg') no-repeat center top
-	background-size 100% 100%
+	background-color #3bb3fb
+	justify-content center
+	align-items center
+	flex-flow column
 	.copyright
-		position absolute
-		left 0
-		bottom 20px
-		z-index $zindex-page
-		width 100%
-	
-.row-login
-	padding 115px 50px 0 508px	
+		margin-top 40px
+		color #fff
+
+.login-box
+	width 400px
+	height 430px
+	background-color #fff
+	border-radius(3px)
+	box-shadow(0 0 10px 10px #36a4e5)
 
 .login-logo
-	width 350px
+	margin 54px 0 0
 	height 63px
 	line-height 63px
 	text-align center
@@ -31,26 +35,25 @@
 .login-store-name
 	font-family arial
 	font-size 30px
-	color #fff
+	color #3bb3fb
 	
 .login-form
-	margin-top 80px	
+	margin 45px 59px 63px	
 	.control-group
-		margin-top 43px		
+		margin-top 20px		
 	.control-group--remember
-		margin-top 36px
+		margin-top 22px
 	.control-group--btn
-		margin-top 30px	
+		margin-top 25px
+		text-align center
 	.controls
 		font-size 0
-	.help-inline--tooltip-wrapper
-		margin-left 14px		
 	
 .login-input-group
 	display inline-block
 	padding-left 47px
-	width 303px
-	border-bottom 1px solid #fff
+	width 235px
+	border-bottom 1px solid #b2b2b2
 	.input-text
 		width 100%
 		height 34px
@@ -58,7 +61,7 @@
 		border none
 		line-height 34px
 		font-size 18px
-		color #fff
+		color #b2b2b2
 .login-input-group--account
 	background url('../images/account.png') no-repeat 5px
 .login-input-group--password
@@ -72,30 +75,35 @@
 		margin-right 11px
 		
 .login-btn
-	width 350px
+	width 279px
 	height 34px
-	background #00a0e9
+	background #3bb3fb
 	border none
+	border-radius(0)
 	line-height 34px
 	font-weight 600
 	font-size 14px
 	color #fff
 	
 //help-inline--tooltip
-.help-inline--tooltip-wrapper,
+.help-inline--tooltip-wrapper
+	position absolute
+	left 367px
+	top 0
+	z-index $zindex-page
+	padding-left 6px	
+	background url('../images/tooltip-l.png') no-repeat left top	
 .help-inline--tooltip,
 .help-inline--tooltip-inner
 	display inline-block
-.help-inline--tooltip-wrapper
-	padding-left 6px
-	background url('../images/tooltip-l.png') no-repeat left top
 .help-inline--tooltip
 	padding-right 2px
 	background url('../images/tooltip-r.png') no-repeat right top
 .help-inline--tooltip-inner
 	padding 0 16px
-	background #fff
+	width 140px
 	height 35px
+	background #fff
 	line-height 35px
 	font-size 18px
 	color #ce0000	
