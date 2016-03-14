@@ -1,4 +1,4 @@
-<div class="mainContent mainContent-summaryReport">
+<div class="mainContent mainContent-report">
 	<div class="mainContent-hd">
 		<div class="mainContent-hd__hd pr">
 			<h3 class="l page-title">报表管理</h3>
@@ -184,7 +184,7 @@
 </script>
 
 <script type="text/ng-template" id="detailResult.html">
-	<div class="table--trade">
+	<div class="row row--reportContent">
 		<div class="table--fixedTop-hd c-affix">
 			<table class="c-table">					
 				<thead>
@@ -206,7 +206,7 @@
 			<table class="c-table">
 				<tbody>
 					<tr>
-						<td width="30%">01-000001-150504-144834-000009000004-000000</td>
+						<td width="30%"><i class="c-icon c-icon-plus c-icon-plus--middle c-icon-plus--blue mr10"></i>01-000001-150504-144834-000009000004-000000</td>
 						<td class="tc" width="8%">1</td>
 						<td class="tc" width="8%">1</td>
 						<td width="13%">2015-01-01 22:22:22</td>
@@ -219,36 +219,52 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="table--fixedTop-hd c-affix">
+	</div>
+	<div class="row row--reportContent">
+		<div class="layout--left">
+			<div class="table--fixedTop-hd c-affix">
+				<table class="c-table">					
+					<thead>
+						<tr>
+							<th width="28%">PLU号</th>
+							<th class="tc" width="12%">名称</th>
+							<th class="tc" width="12%">货号</th>
+							<th width="12%">数量</th>
+							<th width="12%">重量</th>
+							<th width="12%">单价</th>
+							<th width="12%">总价</th>							
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="table--fixedTop-bd">
+				<table class="c-table">
+					<tbody>
+						<tr>
+							<td width="28%">01-000001-150504</td>
+							<td class="tc" width="12%">苹果</td>
+							<td class="tc" width="12%">1111111</td>
+							<td width="12%">1</td>
+							<td width="12%">172</td>
+							<td width="12%">2.00</td>
+							<td width="12%">12.000</td>							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="layout--right">
 			<table class="c-table">					
 				<thead>
 					<tr>
-						<th width="30%">PLU号</th>
-						<th class="tc" width="8%">名称</th>
-						<th class="tc" width="8%">货号</th>
-						<th width="13%">数量</th>
-						<th width="8%">重量</th>
-						<th width="8%">单价</th>
-						<th width="8%">总价</th>
-						<th width="17%">支付分类</th>
+						<th class="tc">支付分类</th>
 					</tr>
 				</thead>
-			</table>
-		</div>
-		<div class="table--fixedTop-bd">
-			<table class="c-table">
 				<tbody>
 					<tr>
-						<td width="30%">01-000001-150504</td>
-						<td class="tc" width="8%">苹果</td>
-						<td class="tc" width="8%">1111111</td>
-						<td width="13%">1</td>
-						<td width="8%">172</td>
-						<td width="8%">2.00</td>
-						<td width="8%">12.000</td>
-						<td width="17%">1</td>
+						<td></td>
 					</tr>
-				</tbody>
+				<tbody>
 			</table>
 		</div>
 	</div>

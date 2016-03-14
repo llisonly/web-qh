@@ -1,7 +1,9 @@
 @import '../core/var'
 @import '../core/mixin'
 
-.mainContent-summaryReport
+.mainContent-report
+	.mainContent-bd
+		padding 10px 17px 30px
 	.select-report
 		margin 7px 0 0
 	.searchbar
@@ -13,14 +15,12 @@
 			height 35px
 			text-align right
 		.c-btn
-			margin 0 0 0 17px
-	.tab--report
-		padding 10px 17px
+			margin 0 0 0 17px	
 	.tab-content
 		min-height 500px
 
 .chart-tool
-	margin 12px 10px 0 0	
+	margin 12px 10px 0 0
 	background-color #fff	
 	font-size 0	
 	li
@@ -47,12 +47,26 @@
 	.chart-table.current
 		background-image url('../images/chart_table_white.png')
 
-.table--trade
-	padding 10px 17px
+.row--reportContent
+	.table--fixedTop-bd
+		.c-table
+			border-top none			
+	.layout--left
+		float left
+		width 800px
+		.table--fixedTop-hd
+			.c-table
+				border-top none
+				border-right none
+	.layout--right
+		margin-left 800px
+		.c-table
+			border-top none
+			border-left none
+			>tbody
+				>tr
+					background none
+					&:hover
+						background none
 	.c-affix
-		width 100%
-	.c-table 
-		>thead,
-		>tbody
-			tr 
-				border none		
+		width 100%	

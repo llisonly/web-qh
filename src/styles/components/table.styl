@@ -19,17 +19,12 @@
 		font-weight 600
 	>thead
 		>tr
-			background #e4e4e4
-			border-width 0 0 1px 2px
-			border-style solid
-			border-color #dcdcdc
+			background #e4e4e4			
 	>tbody
 		>tr:nth-child(even)
-			background #eee
-			border-left 2px solid #fea300
+			background #eee			
 		>tr:nth-child(odd)
-			background #fff
-			border-left 2px solid #1cb09a
+			background #fff			
 		>tr:hover
 			background #3bb3fb
 			td
@@ -40,7 +35,19 @@
 				background-image url('../images/pencil_white.png')
 			.c-icon-delete
 				background-image url('../images/trash_white_24×31.png')
-
+				
+.c-table--borderLeft
+	>thead
+		>tr
+			border-width 0 0 1px 2px
+			border-style solid
+			border-color #dcdcdc
+	>tbody
+		>tr:nth-child(even)
+			border-left 2px solid #fea300
+		>tr:nth-child(odd)
+			border-left 2px solid #1cb09a
+				
 .c-table--loading
 	border none
 	>tbody

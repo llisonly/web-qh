@@ -42,7 +42,7 @@
 	<div class="mainContent-bd">
 		<div class="table--fixedTop">
 			<div id="J_affix" class="table--fixedTop-hd c-affix">
-				<table class="c-table">
+				<table class="c-table c-table--borderLeft">
 					<thead>
 						<tr>
 							<th width="8%">商品编号</th>
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 		<div class="table--fixedTop-bd">
-			<table class="c-table" ng-class="{'c-table--loading': loadingStatus}">
+			<table class="c-table c-table--borderLeft" ng-class="{'c-table--loading': loadingStatus}">
 				<tbody ng-if="loadingStatus">
 					<tr class="loading-wrapper">
 						<td colspan="10"><loading></loading></td>
