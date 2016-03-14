@@ -4,12 +4,13 @@ define([
 	'../page/merchandisePrice/router',
 	'../page/storeManage/router',
 	'../page/memberManage/router',
-	'../page/staffManage/router'
-	], function(commonRouter, merchandiseManageRouter, merchandisePriceRouter, storeManageRouter, memberManageRouter, staffManageRouter){
+	'../page/staffManage/router',
+	'../page/reportManage/router'
+	], function(commonRouter, merchandiseManageRouter, merchandisePriceRouter, storeManageRouter, memberManageRouter, staffManageRouter, reportManageRouter){
 		'use strict';
 
 		var init = function(app){
-			app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+			app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
 				
 				$urlRouterProvider.otherwise("/login");
 
@@ -32,6 +33,9 @@ define([
 					.state('main.staffManage.list', staffManageRouter.list)
 					.state('main.staffManage.add', staffManageRouter.add)
 					.state('main.staffManage.edit', staffManageRouter.edit)
+					.state('main.reportManage', reportManageRouter.summary)
+
+				//$locationProvider.html5Mode(true);
 			}]);
 		};
 

@@ -1,0 +1,58 @@
+@import '../core/var'
+@import '../core/mixin'
+
+.mainContent-summaryReport
+	.select-report
+		margin 7px 0 0
+	.searchbar
+		padding 12px 0 0
+		.search-input-group
+			float left
+			margin 0 0 12px 17px
+			width 254px
+			height 35px
+			text-align right
+		.c-btn
+			margin 0 0 0 17px
+	.tab--report
+		padding 10px 17px
+	.tab-content
+		min-height 500px
+
+.chart-tool
+	margin 12px 10px 0 0	
+	background-color #fff	
+	font-size 0	
+	li
+		display inline-block
+		width 48px
+		height 33px
+		background-repeat no-repeat
+		background-position 50% 50%
+		a 
+			display block
+			height 100%
+	.chart-bar		
+		background-image url('../images/chart_bar_grey.png')
+	.chart-line		
+		background-image url('../images/chart_line_grey.png')
+	.chart-table		
+		background-image url('../images/chart_table_grey.png')
+	.current
+		background-color #16a4fa
+	.chart-bar.current
+		background-image url('../images/chart_bar_white.png')
+	.chart-line.current
+		background-image url('../images/chart_line_white.png')
+	.chart-table.current
+		background-image url('../images/chart_table_white.png')
+
+.table--trade
+	padding 10px 17px
+	.c-affix
+		width 100%
+	.c-table 
+		>thead,
+		>tbody
+			tr 
+				border none		

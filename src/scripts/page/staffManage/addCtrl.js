@@ -3,7 +3,9 @@ define([], function(){
 		
 		var ctrl = ['$scope', 'factory', 'staffManageService', '$state', function($scope, factory, staffManageService, $state){
 			
-			$scope.staff = {};			
+			$scope.staff = {};	
+			$scope.staff.staffNo = '';	
+			$scope.staff.clearPassword = '';	
 			$scope.isEditPage = false;			
 			//是否全选门店/默认为否
 			$scope.isCheckedAllStore = false;

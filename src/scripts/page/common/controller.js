@@ -46,7 +46,8 @@ define([], function(){
 				{id: 3, name: '商品价格', className: 'sidebar-nav__item--merchandisePrice', state: 'main.merchandisePrice', includeState: 'main.merchandisePrice'},
 				{id: 4, name: '门店管理', className: 'sidebar-nav__item--storeManage', state: 'main.storeManage.storeList', includeState: 'main.storeManage.*'},
 				{id: 5, name: '会员管理', className: 'sidebar-nav__item--memberManage', state: 'main.memberManage', includeState: 'main.memberManage.*'},
-				{id: 6, name: '员工管理', className: 'sidebar-nav__item--staffManage', state: 'main.staffManage.list', includeState: 'main.staffManage.*'}
+				{id: 6, name: '员工管理', className: 'sidebar-nav__item--staffManage', state: 'main.staffManage.list', includeState: 'main.staffManage.*'},
+				{id: 7, name: '报表管理', className: 'sidebar-nav__item--reportManage', state: 'main.reportManage', includeState: 'main.reportManage.*'}
 			];			
 
 			$scope.init = function(){

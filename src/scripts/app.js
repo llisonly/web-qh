@@ -33,8 +33,11 @@ define([
 		//员工管理
 		angular.module('staffManage', ['common']);
 
+		//报表管理
+		angular.module('reportManage', ['common']);
+
 		//主应用
-		var app = angular.module('qh-website', ['ui.router', 'ngCookies', 'common', 'merchandiseManage', 'merchandisePrice', 'storeManage', 'memberManage', 'staffManage']);
+		var app = angular.module('qh-website', ['ui.router', 'ngCookies', 'common', 'merchandiseManage', 'merchandisePrice', 'storeManage', 'memberManage', 'staffManage', 'reportManage']);
 
 		//常量
 		constant.init();

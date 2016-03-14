@@ -5,8 +5,9 @@ define([
 	'../page/merchandisePrice/service',
 	'../page/storeManage/service',
 	'../page/memberManage/service',
-	'../page/staffManage/service'
-	], function(commonService, merchandiseManageService, merchandisePriceService, storeManageService, memberManageService, staffManageService){
+	'../page/staffManage/service',
+	'../page/reportManage/service'
+	], function(commonService, merchandiseManageService, merchandisePriceService, storeManageService, memberManageService, staffManageService, reportManageService){
 		'use strict';
 
 		//获取全部service

@@ -13,9 +13,13 @@
 					<div class="control-group">
 						<label class="control-label"><em class="required">*</em>用户名</label>
 						<div class="controls">
-							<input class="c-input c-input--xlarge" type="text" ng-model="staff.staffNo" name="staffNo" required ng-maxlength="45" />
+							<input class="c-input c-input--xlarge" type="text" ng-model="staff.staffNo" name="staffNo" required ng-pattern="/^[A-Za-z0-9]*$/" ng-maxlength="45" />
 							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.staffNo.$dirty && staffForm.staffNo.$error.required">
 								用户名不能为空
+								<i class="triangle-down"></i>
+							</span>
+							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.staffNo.$dirty && staffForm.staffNo.$error.pattern">
+								用户名只能是英文或数字
 								<i class="triangle-down"></i>
 							</span>
 							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.staffNo.$dirty && staffForm.staffNo.$error.maxlength">
@@ -29,7 +33,7 @@
 					<div class="control-group">
 						<label class="control-label"><em class="required">*</em>密码</label>
 						<div class="controls">
-							<input class="c-input c-input--xlarge" type="text" ng-model="staff.clearPassword" name="clearPassword" required />
+							<input class="c-input c-input--xlarge" type="password" ng-model="staff.clearPassword" name="clearPassword" required />
 							<span class="c-help c-help-block c-help-block--tooltip" ng-if="staffForm.clearPassword.$dirty && staffForm.clearPassword.$error.required">
 								密码不能为空
 								<i class="triangle-down"></i>

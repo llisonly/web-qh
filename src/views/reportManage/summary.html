@@ -1,0 +1,256 @@
+<div class="mainContent mainContent-summaryReport">
+	<div class="mainContent-hd">
+		<div class="mainContent-hd__hd pr">
+			<h3 class="l page-title">报表管理</h3>
+			<span class="ml10 mr10">—</span>
+			<span class="r page-head-operatebar">				
+				<a class="c-icon page-head-operate page-head-operate-filter" ng-class="{'page-head-operate-filter--active': isShowSearchbar}" href="javascript:;" ng-click="isShowSearchbar = !isShowSearchbar">筛选</a>
+			</span>
+			<select class="c-select c-select--large select-report" ng-model="defaults.reportCat" ng-options="o.name for o in reportCatList"></select>
+		</div>
+		<div class="mainContent-hd__bd">
+			<div class="searchbar clearfix" ng-if="isShowSearchbar">				
+				<ng-include src="defaults.reportCat.conditionUrl"></ng-include>				
+			</div>
+		</div>
+		<p class="mainContent-hd__ft"></p>
+	</div>
+	<div class="mainContent-bd bge">
+		<ng-include src="defaults.reportCat.resultUrl"></ng-include>
+	</div>
+</div>
+
+<script type="text/ng-template" id="summaryCondition.html">
+	<span class="search-input-group">
+		<label class="name">门店号</label>
+		<select class="c-select c-select--slarge" ng-model="summarySearch.storeNo" ng-options="o.storeNo as o.name for o in storeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">秤号</label>
+		<select class="c-select c-select--slarge" ng-model="summarySearch.scaleNo" ng-options="o.scaleId as o.scaleId for o in scaleList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">商品名称</label>
+		<input class="c-input c-input--slarge" ng-model="summarySearch.pluNo" type="text" placeholder="商品名称" />
+	</span>
+	<a class="c-btn c-btn--default c-btn--blue" ng-click="doSearchSummary(summarySearch)">查询</a>
+	<span class="search-input-group">
+		<label class="name">起始时间</label>
+		<input class="c-input c-input--slarge" ng-model="summarySearch.tradeTimeFrom" ui-datetimepicker type="text" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">结束时间</label>
+		<input class="c-input c-input--slarge" ng-model="summarySearch.tradeTimeTo" ui-datetimepicker type="text" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">时间类型</label>
+		<select class="c-select c-select--slarge" ng-model="summarySearch.byInterval" ng-options="o.key as o.value for o in dateTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">销售类型</label>
+		<select class="c-select c-select--slarge" ng-model="summarySearch.sellType" ng-options="o.key as o.value for o in sellTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">支付类型</label>
+		<select class="c-select c-select--slarge" ng-model="summarySearch.payTypeNo" ng-options="o.key as o.value for o in payTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+</script>
+
+<script type="text/ng-template" id="summaryResult.html">
+	<div class="tab tab--report">
+		<ul class="tab-trigger clearfix">
+			<li class="active"><a href="#price" data-toggle="tab">金额</a></li>
+			<li><a href="#weight" data-toggle="tab">重量</a></li>
+			<li><a href="#count" data-toggle="tab">次数</a></li>
+			<li><a href="#quantity" data-toggle="tab">数量</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="price" class="clearfix tab-pane active">
+				<ul class="r chart-tool">
+					<li class="chart-bar" ng-class="{'current': defaults.chartType == 0}"><a href="javascript:;" ng-click="defaults.chartType = 0">bar</a></li>
+					<li class="chart-line" ng-class="{'current': defaults.chartType == 1}"><a href="javascript:;" ng-click="defaults.chartType = 1">line</a></li>
+					<li class="chart-table" ng-class="{'current': defaults.chartType == 2}"><a href="javascript:;" ng-click="defaults.chartType = 2">table</a></li>
+				</ul>
+			</div>
+			<div id="weight" class="tab-pane">
+				<ul class="r chart-tool">
+					<li class="chart-bar current"><a href="">bar</a></li>
+					<li class="chart-line"><a href="">line</a></li>
+					<li class="chart-table"><a href="">table</a></li>
+				</ul>
+			</div>
+			<div id="count" class="tab-pane">
+				<ul class="r chart-tool">
+					<li class="chart-bar current"><a href="">bar</a></li>
+					<li class="chart-line"><a href="">line</a></li>
+					<li class="chart-table"><a href="">table</a></li>
+				</ul>
+			</div>
+			<div id="quantity" class="tab-pane">
+				<ul class="r chart-tool">
+					<li class="chart-bar current"><a href="">bar</a></li>
+					<li class="chart-line"><a href="">line</a></li>
+					<li class="chart-table"><a href="">table</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="detailCondition.html">
+	<span class="search-input-group">
+		<label class="name">门店号</label>
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.storeNo" ng-options="o.storeNo as o.name for o in storeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">秤号</label>
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.scaleNo" ng-options="o.scaleId as o.scaleId for o in scaleList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">交易起始时间</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.tradeTimeFrom" ui-datetimepicker type="text" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">交易结束时间</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.tradeTimeTo" ui-datetimepicker type="text" />
+	</span>
+	<a class="c-btn c-btn--default c-btn--blue" ng-click="doSearchDetail(detailSearch)">查询</a>
+	<span class="search-input-group">
+		<label class="name">最小总价</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.totalPriceFrom" type="text" placeholder="最小总价" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">最大总价</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.totalPriceTo" type="text" placeholder="最大总价" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">最小折扣</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.discountFrom" type="text" placeholder="最小折扣" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">最大折扣</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.discountTo" type="text" placeholder="最大折扣" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">交易类型</label>
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.totalSellType" ng-options="o.key as o.value for o in sellTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">顾客类型</label>
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.customerType" ng-options="o.key as o.value for o in dateTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">卡号</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.cardNo" type="text" placeholder="卡号" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">商品号</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.pluNo" type="text" placeholder="商品号" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">商品名称</label>
+		<input class="c-input c-input--smiddle" ng-model="detailSearch.pluName" type="text" placeholder="商品名称" />
+	</span>
+	<span class="search-input-group">
+		<label class="name">详细交易类型</label>
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.detailSellType" ng-options="o.key as o.value for o in sellTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+	<span class="search-input-group">
+		<label class="name">支付类型</label>
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.payType" ng-options="o.key as o.value for o in payTypeList">
+			<option value="">请选择</option>
+		</select>					
+	</span>
+</script>
+
+<script type="text/ng-template" id="detailResult.html">
+	<div class="table--trade">
+		<div class="table--fixedTop-hd c-affix">
+			<table class="c-table">					
+				<thead>
+					<tr>
+						<th width="30%">流水号</th>
+						<th class="tc" width="8%">门店号</th>
+						<th class="tc" width="8%">秤号</th>
+						<th width="13%">交易时间</th>
+						<th width="8%">总计</th>
+						<th width="8%">折扣</th>
+						<th width="8%">交易类型</th>
+						<th width="8%">顾客类型</th>
+						<th width="9%">卡号</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="table--fixedTop-bd">
+			<table class="c-table">
+				<tbody>
+					<tr>
+						<td width="30%">01-000001-150504-144834-000009000004-000000</td>
+						<td class="tc" width="8%">1</td>
+						<td class="tc" width="8%">1</td>
+						<td width="13%">2015-01-01 22:22:22</td>
+						<td width="8%">12.00</td>
+						<td width="8%">0</td>
+						<td width="8%">0</td>
+						<td width="8%">1</td>
+						<td width="9%">972376</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="table--fixedTop-hd c-affix">
+			<table class="c-table">					
+				<thead>
+					<tr>
+						<th width="30%">PLU号</th>
+						<th class="tc" width="8%">名称</th>
+						<th class="tc" width="8%">货号</th>
+						<th width="13%">数量</th>
+						<th width="8%">重量</th>
+						<th width="8%">单价</th>
+						<th width="8%">总价</th>
+						<th width="17%">支付分类</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="table--fixedTop-bd">
+			<table class="c-table">
+				<tbody>
+					<tr>
+						<td width="30%">01-000001-150504</td>
+						<td class="tc" width="8%">苹果</td>
+						<td class="tc" width="8%">1111111</td>
+						<td width="13%">1</td>
+						<td width="8%">172</td>
+						<td width="8%">2.00</td>
+						<td width="8%">12.000</td>
+						<td width="17%">1</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</script>
+

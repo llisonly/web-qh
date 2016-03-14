@@ -5,8 +5,9 @@ define([
 	'../page/merchandisePrice/controller',
 	'../page/storeManage/controller',
 	'../page/memberManage/controller',
-	'../page/staffManage/controller'
-	], function(commonController, merchandiseManageController, merchandisePriceController, storeManageController, memberManageController, staffManageController){
+	'../page/staffManage/controller',
+	'../page/reportManage/controller'
+	], function(commonController, merchandiseManageController, merchandisePriceController, storeManageController, memberManageController, staffManageController, reportManageController){
 		'use strict';
 
 		//获取全部controller
