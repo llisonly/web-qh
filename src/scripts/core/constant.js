@@ -26,11 +26,11 @@ define([], function(){
 					
 					var getDateType = function(){
 						return [
-							{key: '年', value: 'year'},
-							{key: '月', value: 'month'},
-							{key: '周', value: 'week'},
-							{key: '天', value: 'day'},
-							{key: '小时', value: 'hour'}
+							{key: 'year', value: '年'},
+							{key: 'month', value: '月'},
+							{key: 'week', value: '周'},
+							{key: 'day', value: '天'},
+							{key: 'hour', value: '小时'}
 						];
 					};
 

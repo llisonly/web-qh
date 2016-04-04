@@ -10,7 +10,7 @@
 		</div>
 		<div class="mainContent-hd__bd">
 			<div class="searchbar clearfix" ng-if="isShowSearchbar">				
-				<ng-include src="defaults.reportCat.conditionUrl"></ng-include>				
+				<ng-include src="defaults.reportCat.conditionUrl"></ng-include>
 			</div>
 		</div>
 		<p class="mainContent-hd__ft"></p>
@@ -77,34 +77,104 @@
 		<div class="tab-content">
 			<div id="price" class="clearfix tab-pane active">
 				<ul class="r chart-tool">
-					<li class="chart-bar" ng-class="{'current': defaults.chartType == 0}"><a href="javascript:;" ng-click="defaults.chartType = 0">bar</a></li>
-					<li class="chart-line" ng-class="{'current': defaults.chartType == 1}"><a href="javascript:;" ng-click="defaults.chartType = 1">line</a></li>
-					<li class="chart-table" ng-class="{'current': defaults.chartType == 2}"><a href="javascript:;" ng-click="defaults.chartType = 2">table</a></li>
+					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't00'}"><a href="javascript:;" ng-click="defaults.chart.type = 't00'">bar</a></li>
+					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't01'}"><a href="javascript:;" ng-click="defaults.chart.type = 't01'">line</a></li>
+					<li class="chart-table current">
+						<a href="javascript:;">table</a>
+					</li>
 				</ul>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't00'">
+					<highchart title='defaults.chart.t00.title' series="defaults.chart.t00.series" options="defaults.chart.t00.options">
+					</highchart>
+				</div>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't01'">
+					<highchart title='defaults.chart.t01.title' series="defaults.chart.t01.series" options="defaults.chart.t01.options">
+					</highchart>
+				</div>
 			</div>
 			<div id="weight" class="tab-pane">
 				<ul class="r chart-tool">
-					<li class="chart-bar current"><a href="">bar</a></li>
-					<li class="chart-line"><a href="">line</a></li>
-					<li class="chart-table"><a href="">table</a></li>
+					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't10'}"><a href="javascript:;" ng-click="defaults.chart.type = 't10'">bar</a></li>
+					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't11'}"><a href="javascript:;" ng-click="defaults.chart.type = 't11'">line</a></li>
+					<li class="chart-table current">
+						<a href="javascript:;">table</a>
+					</li>
 				</ul>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't10'">
+					<highchart title='defaults.chart.t10.title' series="defaults.chart.t10.series" options="defaults.chart.t10.options">
+					</highchart>
+				</div>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't11'">
+					<highchart title='defaults.chart.t11.title' series="defaults.chart.t11.series" options="defaults.chart.t11.options">
+					</highchart>
+				</div>
 			</div>
 			<div id="count" class="tab-pane">
 				<ul class="r chart-tool">
-					<li class="chart-bar current"><a href="">bar</a></li>
-					<li class="chart-line"><a href="">line</a></li>
-					<li class="chart-table"><a href="">table</a></li>
+					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't20'}"><a href="javascript:;" ng-click="defaults.chart.type = 't20'">bar</a></li>
+					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't21'}"><a href="javascript:;" ng-click="defaults.chart.type = 't21'">line</a></li>
+					<li class="chart-table current">
+						<a href="javascript:;">table</a>
+					</li>
 				</ul>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't20'">
+					<highchart title='defaults.chart.t20.title' series="defaults.chart.t20.series" options="defaults.chart.t20.options">
+					</highchart>
+				</div>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't21'">
+					<highchart title='defaults.chart.t21.title' series="defaults.chart.t21.series" options="defaults.chart.t21.options">
+					</highchart>
+				</div>
 			</div>
 			<div id="quantity" class="tab-pane">
 				<ul class="r chart-tool">
-					<li class="chart-bar current"><a href="">bar</a></li>
-					<li class="chart-line"><a href="">line</a></li>
-					<li class="chart-table"><a href="">table</a></li>
+					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't30'}"><a href="javascript:;" ng-click="defaults.chart.type = 't30'">bar</a></li>
+					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't31'}"><a href="javascript:;" ng-click="defaults.chart.type = 't31'">line</a></li>
+					<li class="chart-table current">
+						<a href="javascript:;">table</a>
+					</li>
 				</ul>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't30'">
+					<highchart title='defaults.chart.t30.title' series="defaults.chart.t30.series" options="defaults.chart.t30.options">
+					</highchart>
+				</div>
+				<div class="highcharts-box" ng-if="defaults.chart.type == 't31'">
+					<highchart title='defaults.chart.t31.title' series="defaults.chart.t31.series" options="defaults.chart.t31.options">
+					</highchart>
+				</div>
 			</div>
 		</div>
 	</div>
+	<table class="mt15 c-table c-table--borderLeft">					
+		<thead>
+			<tr>
+				<th class="tc" width="8%">门店号</th>
+				<th class="tc" width="8%">称号</th>
+				<th class="tc" width="10%">商品编码</th>
+				<th class="tc" width="10%">销售类型</th>
+				<th class="tc" width="14%">交易时间</th>
+				<th class="tr" width="10%">总数量</th>
+				<th class="tr" width="10%">均价</th>
+				<th class="tr" width="10%">总重量</th>
+				<th class="tr" width="10%">总数量</th>
+				<th class="tr" width="10%">总价</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="o in pluList">
+				<td class="tc" width="8%">{{ o.storeNo }}</td>
+				<td class="tc" width="8%">{{ o.scaleNo }}</td>
+				<td class="tc" width="10%">{{ o.pluNo }}</td>
+				<td class="tc" width="10%">{{ o.sellType }}</td>
+				<td class="tc" width="14%">{{ o.tradeTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+				<td class="tr" width="10%">{{ o.totalCount }}</td>
+				<td class="tr" width="10%">{{ o.averagePrice }}</td>
+				<td class="tr" width="10%">{{ o.totalWeight }}</td>
+				<td class="tr" width="10%">{{ o.totalQuantity }}</td>
+				<td class="tr" width="10%">{{ o.totalPrice }}</td>
+			</tr>
+		</tbody>
+	</table>
 </script>
 
 <script type="text/ng-template" id="detailCondition.html">

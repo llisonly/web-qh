@@ -13,11 +13,24 @@ define([
 			//存储对象
 			$scope.defaults = {};
 			/**
+			*@param t type sellType payType			
+			*@param 0 amount
+			*@param 1 weight
+			*@param 2 count
+			*@param 3 quantity
 			*@param 0 'bar'
 			*@param 1 'line'
-			*@param 2 'table'
 			*/
-			$scope.defaults.chartType = 0;
+			$scope.defaults.chart = {};			
+
+			$scope.defaults.chart.t00 = {};
+			$scope.defaults.chart.t01 = {};
+			$scope.defaults.chart.t10 = {};
+			$scope.defaults.chart.t11 = {};
+			$scope.defaults.chart.t20 = {};
+			$scope.defaults.chart.t21 = {};
+			$scope.defaults.chart.t30 = {};
+			$scope.defaults.chart.t31 = {};
 
 			//报表类型数据
 			$scope.reportCatList = [
@@ -72,20 +85,21 @@ define([
 			//销售类型报表
 			$scope.getReportDataBySellType = function(param){
 				reportManageService.getReportDataBySellType(param, function(data){
-					console.log(data);
+					$scope.pluList = data;					
+					buildUpSummaryData(data);
 				})
 			};
 
 			//支付类型报表
 			$scope.getReportDataByPayType = function(param){
 				reportManageService.getReportDataByPayType(param, function(data){
-					console.log(data);
+					$scope.pluList = data;
 				})
 			};
 
 			$scope.doSearchSummary = function(summarySearch){
-				if(_.isNumber($scope.summarySearch.sellType)) return $scope.getReportDataBySellType();
-				if(_.isNumber($scope.summarySearch.payTypeNo)) return $scope.getReportDataByPayType();
+				if(_.isNumber($scope.summarySearch.sellType)) return $scope.getReportDataBySellType(summarySearch);
+				if(_.isNumber($scope.summarySearch.payTypeNo)) return $scope.getReportDataByPayType(summarySearch);
 			};
 
 			$scope.doSearchDetail = function(detailSearch){
@@ -94,12 +108,112 @@ define([
 				});
 			};
 
+			function buildUpSummaryData(data){
+				var chartCats = [
+						{
+							type: 'totalPrice',
+							name: '金额',
+							yAxisTitle: '元'
+						},
+						{
+							type: 'totalWeight',
+							name: '重量',
+							yAxisTitle: 'kg'
+						},
+						{
+							type: 'totalCount',
+							name: '次数',
+							yAxisTitle: '次'
+						},
+						{
+							type: 'totalQuantity',
+							name: '数量',
+							yAxisTitle: '个'
+						}	
+					];
+					
+
+				_.each(chartCats, function(cat, index){
+					var config = {},
+						o = {};
+
+					config.series = [];
+					config.xAxisCat = [];
+					o.data = [];
+					o.name = cat.name;
+
+					_.each(data, function(e,i){
+						o.data.push(e[cat.type]);
+						config.xAxisCat.push(e.tradeTime);
+					});
+
+					config.series.push(o);
+					config.yAxisTitle = cat.yAxisTitle;
+					config.chartType = 'column';
+
+					if(cat.type == 'totalPrice'){						
+						$scope.defaults.chart.t00 = generateReportConfig(config);
+						config = angular.copy(config);
+						config.chartType = 'line';
+						$scope.defaults.chart.t01 = generateReportConfig(config);
+					}else if(cat.type == 'totalWeight'){						
+						$scope.defaults.chart.t10 = generateReportConfig(config);
+						config = angular.copy(config);
+						config.chartType = 'line';
+						$scope.defaults.chart.t11 = generateReportConfig(config);
+					}else if(cat.type == 'totalCount'){						
+						$scope.defaults.chart.t20 = generateReportConfig(config);
+						config = angular.copy(config);
+						config.chartType = 'line';
+						$scope.defaults.chart.t21 = generateReportConfig(config);
+					}else if(cat.type == 'totalQuantity'){						
+						$scope.defaults.chart.t30 = generateReportConfig(config);
+						config = angular.copy(config);
+						config.chartType = 'line';
+						$scope.defaults.chart.t31 = generateReportConfig(config);
+					}
+				});
+			}
+
+			function generateReportConfig(config){
+				config =  config || {};
+
+				return {
+					title: {
+						text: config.title
+					},
+					series: config.series,
+					options: {
+						chart: {
+							width: '1185',
+							type: config.chartType,
+							zoomType: 'x'
+						},
+						tooltip: {
+
+						},
+						xAxis: {
+							categories: config.xAxisCat
+						},
+						yAxis: {
+							title: {
+								text: config.yAxisTitle
+							},
+							plotLines: [{
+				            	value: 0,
+				                width: 1,
+				                color: '#808080'
+				            }]
+						}
+					}
+				};
+			}
+
 			$scope.init = function(){
 				$scope.getStoreList();
 			};
 
 			$scope.init();
-			
 		}];
 
 		var controller = {
