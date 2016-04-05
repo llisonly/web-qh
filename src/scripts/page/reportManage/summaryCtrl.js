@@ -74,12 +74,25 @@ define([
 				$scope.getScaleList({storeNo: newVal}, newVal);
 			});
 
+			$scope.$watch('detailSearch.storeNo', function(newVal, oldVal){
+				if(typeof newVal === 'undefined') return;
+				$scope.getScaleList({storeNo: newVal}, newVal);
+			});
+
 			$scope.$watch('summarySearch.sellType', function(newVal, oldVal){				
 				if(typeof newVal === 'number') $scope.summarySearch.payTypeNo = '';
 			});
 
 			$scope.$watch('summarySearch.payTypeNo', function(newVal, oldVal){
 				if(typeof newVal === 'number') $scope.summarySearch.sellType = ''
+			});
+
+			$scope.$watch('detailSearch.detailSellType', function(newVal, oldVal){				
+				if(typeof newVal === 'number') $scope.detailSearch.payType = '';
+			});
+
+			$scope.$watch('detailSearch.payType', function(newVal, oldVal){
+				if(typeof newVal === 'number') $scope.detailSearch.detailSellType = '';
 			});
 
 			//销售类型报表
@@ -111,21 +124,25 @@ define([
 			function buildUpSummaryData(data){
 				var chartCats = [
 						{
+							title: '金额',
 							type: 'totalPrice',
 							name: '金额',
 							yAxisTitle: '元'
 						},
 						{
+							title: '重量',
 							type: 'totalWeight',
 							name: '重量',
 							yAxisTitle: 'kg'
 						},
 						{
+							title: '次数',
 							type: 'totalCount',
 							name: '次数',
 							yAxisTitle: '次'
 						},
 						{
+							title: '数量',
 							type: 'totalQuantity',
 							name: '数量',
 							yAxisTitle: '个'
@@ -144,11 +161,12 @@ define([
 
 					_.each(data, function(e,i){
 						o.data.push(e[cat.type]);
-						config.xAxisCat.push(e.tradeTime);
+						config.xAxisCat.push(utils.formatDate(e.tradeTime));
 					});
 
 					config.series.push(o);
 					config.yAxisTitle = cat.yAxisTitle;
+					config.title = cat.title;
 					config.chartType = 'column';
 
 					if(cat.type == 'totalPrice'){						
@@ -197,7 +215,9 @@ define([
 						},
 						yAxis: {
 							title: {
-								text: config.yAxisTitle
+								text: config.yAxisTitle,
+								align: 'high',
+								rotation: 0
 							},
 							plotLines: [{
 				            	value: 0,

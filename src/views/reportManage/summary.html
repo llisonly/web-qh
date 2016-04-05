@@ -92,7 +92,7 @@
 					</highchart>
 				</div>
 			</div>
-			<div id="weight" class="tab-pane">
+			<div id="weight" class="clearfix tab-pane">
 				<ul class="r chart-tool">
 					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't10'}"><a href="javascript:;" ng-click="defaults.chart.type = 't10'">bar</a></li>
 					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't11'}"><a href="javascript:;" ng-click="defaults.chart.type = 't11'">line</a></li>
@@ -109,7 +109,7 @@
 					</highchart>
 				</div>
 			</div>
-			<div id="count" class="tab-pane">
+			<div id="count" class="clearfix tab-pane">
 				<ul class="r chart-tool">
 					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't20'}"><a href="javascript:;" ng-click="defaults.chart.type = 't20'">bar</a></li>
 					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't21'}"><a href="javascript:;" ng-click="defaults.chart.type = 't21'">line</a></li>
@@ -126,7 +126,7 @@
 					</highchart>
 				</div>
 			</div>
-			<div id="quantity" class="tab-pane">
+			<div id="quantity" class="clearfix tab-pane">
 				<ul class="r chart-tool">
 					<li class="chart-bar" ng-class="{'current': defaults.chart.type == 't30'}"><a href="javascript:;" ng-click="defaults.chart.type = 't30'">bar</a></li>
 					<li class="chart-line" ng-class="{'current': defaults.chart.type == 't31'}"><a href="javascript:;" ng-click="defaults.chart.type = 't31'">line</a></li>
@@ -223,7 +223,7 @@
 	</span>
 	<span class="search-input-group">
 		<label class="name">顾客类型</label>
-		<select class="c-select c-select--smiddle" ng-model="detailSearch.customerType" ng-options="o.key as o.value for o in dateTypeList">
+		<select class="c-select c-select--smiddle" ng-model="detailSearch.customerType" ng-options="o.key as o.value for o in customerTypeList">
 			<option value="">请选择</option>
 		</select>					
 	</span>

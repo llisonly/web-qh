@@ -30,6 +30,24 @@ define([
 		});
 	};
 
+	qh.formatDate = function(date){
+		if(!date) return;
+
+		var oDate = {},
+			o = {};			
+
+		oDate = new Date(date);
+
+		o.y = oDate.getFullYear();
+		o.M = oDate.getMonth() + 1;
+		o.d = oDate.getDate();
+		o.h = oDate.getHours();
+		o.m = oDate.getMinutes();
+		o.s = oDate.getSeconds();
+
+		return o.y + '-' + (o.M < 10 ? '0'+o.M : o.M) + '-' +  (o.d < 10 ? '0'+o.d : o.d) + ' ' +  (o.h < 10 ? '0'+o.h : o.h) + ':' +  (o.m < 10 ? '0'+o.m : o.m) + ':' + (o.s < 10 ? '0'+o.s : o.s)
+	}
+
 	qh.addPercent = function(value){
 		return (value ? value + '%' : '');
 	};
