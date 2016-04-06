@@ -27,9 +27,7 @@ define([
 		};
 
 		//交易明细
-		apis.getTradeTotal = function(param, success, error){
-			return utils.http($http, 'post', '/api/trade/total', param, success, error);
-		};
+		apis.getTradeTotal = '/api/trade/total';
 
 		//商品明细
 		apis.getPluDetail = function(param, success, error){

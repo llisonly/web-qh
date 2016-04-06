@@ -68,7 +68,7 @@ define([
 						if(defaults.ajax && defaults.ajax.data) $.extend(params, defaults.ajax.data);
 
 						$.ajax({
-							type: 'GET',
+							type: (defaults.ajax && defaults.ajax.type) || 'GET',
 							url: defaults.dataSource,
 							data: params,
 							success: function(data){

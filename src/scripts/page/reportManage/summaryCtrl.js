@@ -38,7 +38,7 @@ define([
 				{name: '商品明细报表', conditionUrl: 'detailCondition.html', resultUrl: 'detailResult.html'}
 			];
 
-			$scope.defaults.reportCat = $scope.reportCatList[0];
+			$scope.defaults.reportCat = $scope.reportCatList[1];
 
 			//时间类型数据
 			$scope.dateTypeList = constants.getDateType();
@@ -88,11 +88,11 @@ define([
 			});
 
 			$scope.$watch('detailSearch.detailSellType', function(newVal, oldVal){				
-				if(typeof newVal === 'number') $scope.detailSearch.payType = '';
+				if(typeof newVal === 'number') $scope.detailSearch.payType = null;
 			});
 
 			$scope.$watch('detailSearch.payType', function(newVal, oldVal){
-				if(typeof newVal === 'number') $scope.detailSearch.detailSellType = '';
+				if(typeof newVal === 'number') $scope.detailSearch.detailSellType = null;
 			});
 
 			//销售类型报表
@@ -116,10 +116,30 @@ define([
 			};
 
 			$scope.doSearchDetail = function(detailSearch){
-				reportManageService.getTradeTotal(detailSearch, function(data){
-					console.log(data);
-				});
+				var params = angular.copy(detailSearch);
+
+				delete params.payType;
+				generatePage(params);
 			};
+
+			function generatePage(params){									
+				factory.generatePagination({
+					id: 'pagination',
+					options: {
+						dataSource: reportManageService.getTradeTotal,
+						ajax:{
+							type: 'POST',
+							data: params
+						},
+						pageSize: 10,
+						callback: function(data, totalCount){
+							$scope.trades = data;							
+							$scope.$apply();
+						}
+					}
+				});
+
+			}
 
 			function buildUpSummaryData(data){
 				var chartCats = [
@@ -228,6 +248,16 @@ define([
 					}
 				};
 			}
+
+			$scope.showTradeDetail = function(o){
+				var flowNos = [];
+
+				flowNos.push(o.flowNo);
+
+				reportManageService.getPluDetail(flowNos, function(data){
+					$scope.tradeDetailPlus = data;
+				});
+			};
 
 			$scope.init = function(){
 				$scope.getStoreList();

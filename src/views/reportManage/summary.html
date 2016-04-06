@@ -262,12 +262,12 @@
 						<th width="30%">流水号</th>
 						<th class="tc" width="8%">门店号</th>
 						<th class="tc" width="8%">秤号</th>
-						<th width="13%">交易时间</th>
-						<th width="8%">总计</th>
-						<th width="8%">折扣</th>
-						<th width="8%">交易类型</th>
-						<th width="8%">顾客类型</th>
-						<th width="9%">卡号</th>
+						<th class="tc" width="13%">交易时间</th>
+						<th class="tr" width="8%">总计</th>
+						<th class="tr" width="8%">折扣</th>
+						<th class="tc" width="8%">交易类型</th>
+						<th class="tc" width="8%">顾客类型</th>
+						<th class="tc" width="9%">卡号</th>
 					</tr>
 				</thead>
 			</table>
@@ -275,22 +275,26 @@
 		<div class="table--fixedTop-bd">
 			<table class="c-table">
 				<tbody>
-					<tr>
-						<td width="30%"><i class="c-icon c-icon-plus c-icon-plus--middle c-icon-plus--blue mr10"></i>01-000001-150504-144834-000009000004-000000</td>
-						<td class="tc" width="8%">1</td>
-						<td class="tc" width="8%">1</td>
-						<td width="13%">2015-01-01 22:22:22</td>
-						<td width="8%">12.00</td>
-						<td width="8%">0</td>
-						<td width="8%">0</td>
-						<td width="8%">1</td>
-						<td width="9%">972376</td>
+					<tr ng-repeat="o in trades" ng-click="showTradeDetail(o)">
+						<td width="30%">
+							<i class="c-icon c-icon-plus c-icon-plus--middle c-icon-plus--blue mr10"></i>
+							{{ o.flowNo }}
+						</td>
+						<td class="tc" width="8%">{{ o.storeNo }}</td>
+						<td class="tc" width="8%">{{ o.scaleNo }}</td>
+						<td width="13%">{{ o.tradeTime |date:'yyyy-MM-dd HH:mm:ss' }}</td>
+						<td class="tr" width="8%">{{ o.realSum }}元</td>
+						<td class="tr" width="8%">{{ o.totalDiscountSum }}</td>
+						<td class="tc" width="8%">{{ o.sellType }}</td>
+						<td class="tc" width="8%">{{ o.customerType }}</td>
+						<td class="tc" width="9%">{{ o.cardNo }}</td>
 					</tr>
 				</tbody>
 			</table>
+			<div id="pagination" class="mt15 tc"></div>
 		</div>
 	</div>
-	<div class="row row--reportContent">
+	<div class="row row--reportContent mt15">
 		<div class="layout--left">
 			<div class="table--fixedTop-hd c-affix">
 				<table class="c-table">					
