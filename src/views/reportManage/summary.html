@@ -275,7 +275,7 @@
 		<div class="table--fixedTop-bd">
 			<table class="c-table">
 				<tbody>
-					<tr ng-repeat="o in trades" ng-click="showTradeDetail(o)">
+					<tr ng-repeat="o in trades" ng-class="{'active': o.isChecked}" ng-click="showTradeDetail(o)">
 						<td width="30%">
 							<i class="c-icon c-icon-plus c-icon-plus--middle c-icon-plus--blue mr10"></i>
 							{{ o.flowNo }}
@@ -285,8 +285,8 @@
 						<td width="13%">{{ o.tradeTime |date:'yyyy-MM-dd HH:mm:ss' }}</td>
 						<td class="tr" width="8%">{{ o.realSum }}元</td>
 						<td class="tr" width="8%">{{ o.totalDiscountSum }}</td>
-						<td class="tc" width="8%">{{ o.sellType }}</td>
-						<td class="tc" width="8%">{{ o.customerType }}</td>
+						<td class="tc" width="8%">{{ o.sellType |sellType }}</td>
+						<td class="tc" width="8%">{{ o.customerType |customerType}}</td>
 						<td class="tc" width="9%">{{ o.cardNo }}</td>
 					</tr>
 				</tbody>
@@ -294,19 +294,19 @@
 			<div id="pagination" class="mt15 tc"></div>
 		</div>
 	</div>
-	<div class="row row--reportContent mt15">
+	<div class="row row--reportContent mt15" ng-if="defaults.isShowTradeDetail">
 		<div class="layout--left">
 			<div class="table--fixedTop-hd c-affix">
 				<table class="c-table">					
 					<thead>
 						<tr>
-							<th width="28%">PLU号</th>
-							<th class="tc" width="12%">名称</th>
-							<th class="tc" width="12%">货号</th>
-							<th width="12%">数量</th>
-							<th width="12%">重量</th>
-							<th width="12%">单价</th>
-							<th width="12%">总价</th>							
+							<th width="20%">PLU号</th>
+							<th class="tc" width="14%">名称</th>
+							<th class="tc" width="14%">货号</th>
+							<th class="tr" width="13%">数量</th>
+							<th class="tr" width="13%">重量</th>
+							<th class="tr" width="13%">单价</th>
+							<th class="tr" width="13%">总价</th>							
 						</tr>
 					</thead>
 				</table>
@@ -314,14 +314,14 @@
 			<div class="table--fixedTop-bd">
 				<table class="c-table">
 					<tbody>
-						<tr>
-							<td width="28%">01-000001-150504</td>
-							<td class="tc" width="12%">苹果</td>
-							<td class="tc" width="12%">1111111</td>
-							<td width="12%">1</td>
-							<td width="12%">172</td>
-							<td width="12%">2.00</td>
-							<td width="12%">12.000</td>							
+						<tr ng-repeat="o in tradeDetailPlus">
+							<td width="20%">{{ o.pluNo }}</td>
+							<td class="tc" width="14%">{{ o.pluName }}</td>
+							<td class="tc" width="14%">{{ o.articleNo }}</td>
+							<td class="tr" width="13%">{{ o.quantity }}</td>
+							<td class="tr" width="13%">{{ o.weight }}</td>
+							<td class="tr" width="13%">{{ o.unitPrice }}</td>
+							<td class="tr" width="13%">{{ o.totalPrice }}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -333,13 +333,36 @@
 					<tr>
 						<th class="tc">支付分类</th>
 					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-					</tr>
-				<tbody>
+				</thead>				
 			</table>
+			<div class="paymentCat-wrapper" ng-if="paymentCats.length">
+				<div class="paymentCat">
+					<div class="paymentCat-hd">
+						门店名/号
+					</div>
+					<div class="paymentCat-bd">
+						<div class="row">
+							<div class="layout-left">
+								金额
+							</div>
+							<div class="layout-right">
+								支付方式
+							</div>
+						</div>
+						<div class="row" ng-repeat="o in paymentCats">
+							<div class="layout-left">
+								{{ o.payMoney }}
+							</div>
+							<div class="layout-right">
+								{{ o.payTypeNo }}
+							</div>
+						</div>
+					</div>
+					<div class="paymentCat-ft">
+						<img barcode codevalue="defaults.codeValue" width="192" height="20" />
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </script>

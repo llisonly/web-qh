@@ -9,7 +9,8 @@ requirejs.config({
 		angularCookies: 'lib/angular-cookies/angular-cookies',
 		utils: 'core/utils',
 		datetimepicker: 'lib/jquery-datetimepicker/jquery.datetimepicker',
-		pagination: 'lib/jquery-pagination/jquery-pagination.min'		
+		pagination: 'lib/jquery-pagination/jquery-pagination.min',
+		barcode: 'lib/barcode/barcode'
 	},
 	shim: {
 		'bootstrap': {

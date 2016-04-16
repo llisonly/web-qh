@@ -1,6 +1,7 @@
 define([
     'lib/highcharts/highcharts', 
-	'datetimepicker'	
+	'datetimepicker',
+    'barcode'
 	], function(){
 		'use strict';
 
@@ -53,6 +54,25 @@ define([
     					}
     				}
     			})
+                .directive('barcode', function(){
+                    return {
+                        restrict: 'A',
+                        scope: {
+                            codevalue: '='
+                        },                      
+                        link: function(scope, element, attrs){
+                            
+                            var options = {
+                                
+                            };
+
+                            scope.$watch('codevalue', function(newVal, oldVal){
+                                if(!newVal) return;
+                                element.JsBarcode(scope.codevalue, options);
+                            });                                
+                        }
+                    }
+                })
                 .directive('highchart', function(){                   
                     var seriesId = 0;
                     var ensureIds = function(series){

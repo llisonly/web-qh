@@ -23,6 +23,28 @@ define([], function(){
 						return map[input];
 					};
 				})
+				.filter('customerType', function(){
+					var map = {
+						'0': '会员', 
+						'1': '非会员'									
+					};
+
+					return function(input){
+						return map[input];
+					};
+				})
+				.filter('sellType', function(){
+					var map = {
+						'0': '正常', 
+						'1': '取消',							
+						'2': '退货',							
+						'9': '异常',							
+					};
+
+					return function(input){
+						return map[input];
+					};
+				})
 				.filter('substring8', function(){		
 
 					return function(input){

@@ -88,11 +88,11 @@ define([
 			});
 
 			$scope.$watch('detailSearch.detailSellType', function(newVal, oldVal){				
-				if(typeof newVal === 'number') $scope.detailSearch.payType = null;
+				if(typeof newVal === 'number') $scope.detailSearch.payType = '';
 			});
 
 			$scope.$watch('detailSearch.payType', function(newVal, oldVal){
-				if(typeof newVal === 'number') $scope.detailSearch.detailSellType = null;
+				if(typeof newVal === 'number') $scope.detailSearch.detailSellType = '';
 			});
 
 			//销售类型报表
@@ -118,8 +118,8 @@ define([
 			$scope.doSearchDetail = function(detailSearch){
 				var params = angular.copy(detailSearch);
 
-				delete params.payType;
-				generatePage(params);
+				if(_.isNumber($scope.detailSearch.detailSellType)) return generatePage(params);
+				if(_.isNumber($scope.detailSearch.payType)) return generatePage(params);				
 			};
 
 			function generatePage(params){									
@@ -252,10 +252,24 @@ define([
 			$scope.showTradeDetail = function(o){
 				var flowNos = [];
 
+				//checkPlu
+				$scope.defaults.isShowTradeDetail = true;
+
+				_.each($scope.trades, function(ele, index){
+					ele.isChecked = false;
+				});
+
+				o.isChecked = true;
+
 				flowNos.push(o.flowNo);
 
 				reportManageService.getPluDetail(flowNos, function(data){
 					$scope.tradeDetailPlus = data;
+				});
+
+				reportManageService.getPaymentDetail(flowNos, function(data){
+					$scope.paymentCats = data;
+					$scope.defaults.codeValue =  data[0].payMoney;				
 				});
 			};
 
