@@ -38,7 +38,7 @@ define([
 				{name: '商品明细报表', conditionUrl: 'detailCondition.html', resultUrl: 'detailResult.html'}
 			];
 
-			$scope.defaults.reportCat = $scope.reportCatList[1];
+			$scope.defaults.reportCat = $scope.reportCatList[0];
 
 			//时间类型数据
 			$scope.dateTypeList = constants.getDateType();
@@ -269,7 +269,7 @@ define([
 
 				reportManageService.getPaymentDetail(flowNos, function(data){
 					$scope.paymentCats = data;
-					$scope.defaults.codeValue =  data[0].payMoney;				
+					$scope.defaults.codeValue =  data[0].flowNo;				
 				});
 			};
 
