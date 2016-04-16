@@ -35,7 +35,7 @@ define([
 					.state('main.staffManage.edit', staffManageRouter.edit)
 					.state('main.reportManage', reportManageRouter.summary)
 
-				//$locationProvider.html5Mode(true);
+				$locationProvider.html5Mode(true);
 			}]);
 		};
 
