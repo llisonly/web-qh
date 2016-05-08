@@ -71,7 +71,7 @@
 							<td class="tr" width="10%">{{ o.price }}<em class="price-unit">元/{{ o.unit |unit }}</em></td>				
 							<td class="tr" width="12%">{{ findTare(tareList, o.tareId).weight }}<em class="price-unit">{{ findTare(tareList, o.tareId).unit |unit }}</em></td>
 							<td class="tc" width="10%">
-								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="#/main/merchandiseManage/edit/{{ o.pluId }}">编辑</a>
+								<a class="c-icon c-icon-edit c-icon-edit--default c-icon-edit--black" href="/main/merchandiseManage/edit/{{ o.pluId }}">编辑</a>
 								<a class="ml20 c-icon c-icon-delete c-icon-delete--default	c-icon-delete--black" href="javascript:;" ng-click="showConfirm(o)">删除</a>
 							</td>
 						</tr>				
@@ -82,4 +82,4 @@
 		</div>		
 	</div>
 </div>
-<a class="tool-add" href="#/main/merchandiseManage/add"></a>
+<a class="tool-add" href="/main/merchandiseManage/add"></a>

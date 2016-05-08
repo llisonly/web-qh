@@ -43,11 +43,15 @@ define([
 			//时间类型数据
 			$scope.dateTypeList = constants.getDateType();
 
+			$scope.summarySearch.byInterval = $scope.dateTypeList[3].key;
+
 			//顾客类型
 			$scope.customerTypeList = constants.getCustomerType();
 
 			//销售类型数据
 			$scope.sellTypeList = constants.getSellType();
+
+			$scope.summarySearch.sellType = $scope.sellTypeList[0].key;
 
 			//支付类型数据
 			$scope.payTypeList = constants.getPayType();
