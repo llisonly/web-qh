@@ -83,25 +83,25 @@ define([
 				$scope.getScaleList({storeNo: newVal}, newVal);
 			});
 
-			$scope.$watch('summarySearch.sellType', function(newVal, oldVal){				
-				if(typeof newVal === 'number') $scope.summarySearch.payTypeNo = '';
+			$scope.$watch('summarySearch.pluName', function(newVal, oldVal){				
+				if(newVal) $scope.summarySearch.payTypeNo = null;
 			});
 
 			$scope.$watch('summarySearch.payTypeNo', function(newVal, oldVal){
-				if(typeof newVal === 'number') $scope.summarySearch.sellType = ''
+				if(typeof newVal === 'number') $scope.summarySearch.pluName = null;
 			});
 
-			$scope.$watch('detailSearch.detailSellType', function(newVal, oldVal){				
-				if(typeof newVal === 'number') $scope.detailSearch.payType = '';
+			$scope.$watch('detailSearch.pluName', function(newVal, oldVal){				
+				if(newVal) $scope.detailSearch.payType = null;
 			});
 
 			$scope.$watch('detailSearch.payType', function(newVal, oldVal){
-				if(typeof newVal === 'number') $scope.detailSearch.detailSellType = '';
+				if(typeof newVal === 'number') $scope.detailSearch.pluName = null;
 			});
 
 			//销售类型报表
-			$scope.getReportDataBySellType = function(param){
-				reportManageService.getReportDataBySellType(param, function(data){
+			$scope.getReportDataByPlu = function(param){
+				reportManageService.getReportDataByPlu(param, function(data){
 					$scope.pluList = data;					
 					buildUpSummaryData(data);
 				})
@@ -115,14 +115,14 @@ define([
 			};
 
 			$scope.doSearchSummary = function(summarySearch){
-				if(_.isNumber($scope.summarySearch.sellType)) return $scope.getReportDataBySellType(summarySearch);
+				if($scope.summarySearch.pluName) return $scope.getReportDataByPlu(summarySearch);
 				if(_.isNumber($scope.summarySearch.payTypeNo)) return $scope.getReportDataByPayType(summarySearch);
 			};
 
 			$scope.doSearchDetail = function(detailSearch){
 				var params = angular.copy(detailSearch);
 
-				if(_.isNumber($scope.detailSearch.detailSellType)) return generatePage(params);
+				if($scope.detailSearch.pluName) return generatePage(params);
 				if(_.isNumber($scope.detailSearch.payType)) return generatePage(params);				
 			};
 

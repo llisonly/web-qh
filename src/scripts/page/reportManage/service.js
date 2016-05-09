@@ -17,7 +17,7 @@ define([
 		};
 		
 		//销售类型报表
-		apis.getReportDataBySellType = function(param, success, error){
+		apis.getReportDataByPlu = function(param, success, error){
 			return utils.http($http, 'post', '/api/trade/plusummary', param, success, error);
 		};
 

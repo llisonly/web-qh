@@ -3,8 +3,7 @@ require([],function(){
 		var $sidebar = $('#J_sidebar'),
 			$sidebarBtn = $('#J_sidebar-control'),
 			$win = $(window),			
-			$goTop = $('#J_goTop'),
-			$affix = $('#J_affix'),
+			$goTop = $('#J_goTop'),			
 			throttledwinScrollHandler;
 
 		function init(){
@@ -24,11 +23,13 @@ require([],function(){
 		}
 
 		function initAffix(){
-			$affix.affix({
-				offset: {
-					top: $affix.offset().top
-				}
-			});			
+			setTimeout(function(){
+				$('#J_affix').affix({
+					offset: {
+						top: top
+					}
+				});				
+			}, 2000);						
 		}
 
 		function bindEvent(){
